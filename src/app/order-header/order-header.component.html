@@ -1,3 +1,13 @@
-<p>
-  order-header works!
-</p>
+<div>
+  <small>{{convert(order.date) | date:'medium'}}</small>
+  <br>
+  <img *ngIf="order.prdValueBillUploaded" 
+  [src]="order.billUrl" height="40px" width="40px"  
+  (click)="showbill(order.billUrl)" >
+  <img *ngIf="order.shippingFeeBillUploaded" 
+  [src]="order.shippingBillUrl" height="40px" width="40px" 
+  (click)="showbill(order.shippingBillUrl)">
+
+  <button *ngIf="!order.paid&&order.prdValueBillUploaded" type="button" class="btn btn-primary btn-sm" (click)="paymentReceived()" >收到付款</button>
+  <button *ngIf="order.paid" type="button" class="btn btn-danger btn-sm" (click)="paymentNotReceived()" >撤销</button>
+</div>

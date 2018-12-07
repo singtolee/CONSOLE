@@ -1,14 +1,30 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm bg-light">
+
+    <div class="col-sm bg-secondary">
+      <h3>BILL UPLOADED ORDERS</h3>
       <ul>
-        <li *ngFor="let order of orders | async">
-          {{ order.data.uid }}
+        <li *ngFor="let billedOrder of billUploadedOrders | async">
+          <app-order-header [order]="billedOrder"></app-order-header>
         </li>
       </ul>
     </div>
-    <div class="col-sm bg-dark">
 
+    <div class="col-sm bg-light">
+      <h3>NEW ORDERS</h3>
+      <ul>
+        <li *ngFor="let order of newOrders | async">
+          <app-order-header [order]="order"></app-order-header>
+        </li>
+      </ul>
+    </div>
+    <div class="col-sm bg-info">
+      <h3>PAID ORDERS</h3>
+      <ul>
+        <li *ngFor="let paidOrder of paidOrders | async">
+          <app-order-header [order]="paidOrder"></app-order-header>
+        </li>
+      </ul>
     </div>
 
   </div>

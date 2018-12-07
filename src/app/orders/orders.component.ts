@@ -19,14 +19,20 @@ interface ALiOrder {
 
   uid:string;
   date:Date;
+
   arrived:boolean;
+
   done:boolean;
+
   paid:boolean;
+
   billUrl:string;
   prdValueBillUploaded:boolean;
+
   shippingFeePaid:boolean;
   shippingBillUrl:string;
   shippingFeeBillUploaded:boolean;
+  
   totalPrice:number;
   totalWeight:number;
   actualWeight:number;
@@ -50,25 +56,64 @@ interface ALiOrder {
 export class OrdersComponent implements OnInit {
 
   dir = "MYORDERS"
-  orders: Observable<any>
+  newOrders: Observable<any>
+  billUploadedOrders: Observable<any>
+  paidOrders: Observable<any>
 
   constructor(private db: AngularFirestore) { }
 
   ngOnInit() {
-    this.orders = this.loadOrders()
+    this.newOrders = this.loadNewOrders()
+    this.paidOrders = this.loadPaidOrders()
+    this.billUploadedOrders = this.loadBillUploadedOrders()
   }
 
-  loadOrders(){
+  loadBillUploadedOrders(){
     return this.db.collection(this.dir, ref=>{
       return ref.where('done','==',false)
-                .orderBy('date','desc')
+      .where('paid','==',false)
+      .where('prdValueBillUploaded','==',true)
+      .orderBy('date','desc')
     }).snapshotChanges().pipe(map(actions=>{
       return actions.map(a=>{
         const data = a.payload.doc.data() as ALiOrder;
         const id = a.payload.doc.id;
-        return {id,data};
+        data.key = id
+        return data;
       })
     }))
+
+  }
+
+  loadNewOrders(){
+    return this.db.collection(this.dir, ref=>{
+      return ref.where('done','==',false)
+      .where('paid','==',false)
+      .orderBy('date','desc')
+    }).snapshotChanges().pipe(map(actions=>{
+      return actions.map(a=>{
+        const data = a.payload.doc.data() as ALiOrder;
+        const id = a.payload.doc.id;
+        data.key = id
+        return data;
+      })
+    }))
+  }
+
+  loadPaidOrders(){
+    return this.db.collection(this.dir, ref=>{
+      return ref.where('done','==',false)
+      .where('paid','==',true)
+      .orderBy('date','desc')
+    }).snapshotChanges().pipe(map(actions=>{
+      return actions.map(a=>{
+        const data = a.payload.doc.data() as ALiOrder;
+        const id = a.payload.doc.id;
+        data.key = id
+        return data;
+      })
+    }))
+
   }
 
 }

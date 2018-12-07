@@ -7,6 +7,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -14,6 +16,7 @@ import { LoginComponent } from './login/login.component';
 import { OrdersComponent } from './orders/orders.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { OrderHeaderComponent } from './order-header/order-header.component';
+import { ImageModalComponent } from './image-modal/image-modal.component';
 export const firebaseConfig = environment.firebaseConfig;
 
 @NgModule({
@@ -23,7 +26,8 @@ export const firebaseConfig = environment.firebaseConfig;
     LoginComponent,
     OrdersComponent,
     PageNotFoundComponent,
-    OrderHeaderComponent
+    OrderHeaderComponent,
+    ImageModalComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +36,11 @@ export const firebaseConfig = environment.firebaseConfig;
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig),
+    NgbModule
+  ],
+  entryComponents:[
+    ImageModalComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
