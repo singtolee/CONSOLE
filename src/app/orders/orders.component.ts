@@ -20,6 +20,8 @@ interface ALiOrder {
   uid:string;
   date:Date;
 
+  bought:boolean;
+
   arrived:boolean;
 
   done:boolean;
