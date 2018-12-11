@@ -17,6 +17,10 @@ import { OrdersComponent } from './orders/orders.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { OrderHeaderComponent } from './order-header/order-header.component';
 import { ImageModalComponent } from './image-modal/image-modal.component';
+import { PaidOrdersCellComponent } from './paid-orders-cell/paid-orders-cell.component';
+import { UserInfoCardComponent } from './user-info-card/user-info-card.component';
+import { OrderDetailComponent } from './order-detail/order-detail.component';
+import { MiniPrdCellComponent } from './mini-prd-cell/mini-prd-cell.component';
 export const firebaseConfig = environment.firebaseConfig;
 
 @NgModule({
@@ -27,7 +31,11 @@ export const firebaseConfig = environment.firebaseConfig;
     OrdersComponent,
     PageNotFoundComponent,
     OrderHeaderComponent,
-    ImageModalComponent
+    ImageModalComponent,
+    PaidOrdersCellComponent,
+    UserInfoCardComponent,
+    OrderDetailComponent,
+    MiniPrdCellComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +48,9 @@ export const firebaseConfig = environment.firebaseConfig;
     NgbModule
   ],
   entryComponents:[
-    ImageModalComponent
+    ImageModalComponent,
+    UserInfoCardComponent,
+    OrderDetailComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

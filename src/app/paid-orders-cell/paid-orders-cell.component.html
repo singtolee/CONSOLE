@@ -1,0 +1,21 @@
+<div>
+  <small>{{convert(order.date) | date:'medium'}}</small><small class="ml-2 font-weight-bold">订单金额:{{order.totalPrice}}</small>
+  <br>
+  <button type="button" class="btn btn-primary btn-sm mb-2" (click)="viewUserById()">查看用户</button>
+  <button type="button" class="btn btn-primary btn-sm mb-2 ml-2" (click)="viewOrder()">查看订单</button>
+  <br>
+  <img *ngIf="order.prdValueBillUploaded" 
+  [src]="order.billUrl" height="40px" width="40px"  
+  (click)="showbill(order.billUrl)" >
+  <img *ngIf="order.shippingFeeBillUploaded" 
+  [src]="order.shippingBillUrl" height="40px" width="40px" 
+  (click)="showbill(order.shippingBillUrl)">
+
+  <button *ngIf="!order.paid&&order.prdValueBillUploaded" type="button" class="btn btn-primary btn-sm ml-2" (click)="togglePaidStatus(true)" >收到付款</button>
+  <button *ngIf="order.paid" type="button" class="btn btn-danger btn-sm ml-2" (click)="togglePaidStatus(false)" >未付款</button>
+  <button *ngIf="!order.bought" type="button" class="btn btn-success btn-sm ml-2" (click)="toggleProductsBoughtStatus(true)" >商品已购</button>
+  <button *ngIf="order.bought" type="button" class="btn btn-danger btn-sm ml-2" (click)="toggleProductsBoughtStatus(false)" >商品未购</button>
+
+  <br>
+
+</div>

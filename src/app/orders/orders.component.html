@@ -18,11 +18,21 @@
         </li>
       </ul>
     </div>
+
     <div class="col-sm bg-info">
       <h3>PAID ORDERS</h3>
       <ul>
         <li *ngFor="let paidOrder of paidOrders | async">
-          <app-order-header [order]="paidOrder"></app-order-header>
+          <app-paid-orders-cell [order]="paidOrder"></app-paid-orders-cell>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-sm bg-success">
+      <h3>BOUGHT ORDERS</h3>
+      <ul>
+        <li *ngFor="let boughtOrder of boughtOrders | async">
+          <app-order-header [order]="boughtOrder"></app-order-header>
         </li>
       </ul>
     </div>

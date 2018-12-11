@@ -8,6 +8,8 @@ interface MiniProduct {
   skuId:string;
   cartId:string;
   prdTitle:string;
+  prdCnTitle:string;
+  colorAndSize:string;
   imageUrl:string;
   color:string;
   size:string;
@@ -61,6 +63,7 @@ export class OrdersComponent implements OnInit {
   newOrders: Observable<any>
   billUploadedOrders: Observable<any>
   paidOrders: Observable<any>
+  boughtOrders:Observable<any>
 
   constructor(private db: AngularFirestore) { }
 
@@ -68,6 +71,7 @@ export class OrdersComponent implements OnInit {
     this.newOrders = this.loadNewOrders()
     this.paidOrders = this.loadPaidOrders()
     this.billUploadedOrders = this.loadBillUploadedOrders()
+    this.boughtOrders = this.loadBoughtOrders()
   }
 
   loadBillUploadedOrders(){
@@ -106,6 +110,23 @@ export class OrdersComponent implements OnInit {
     return this.db.collection(this.dir, ref=>{
       return ref.where('done','==',false)
       .where('paid','==',true)
+      .orderBy('date','desc')
+    }).snapshotChanges().pipe(map(actions=>{
+      return actions.map(a=>{
+        const data = a.payload.doc.data() as ALiOrder;
+        const id = a.payload.doc.id;
+        data.key = id
+        return data;
+      })
+    }))
+
+  }
+
+  loadBoughtOrders(){
+    return this.db.collection(this.dir, ref=>{
+      return ref.where('done','==',false)
+      .where('paid','==',true)
+      .where('bought','==',true)
       .orderBy('date','desc')
     }).snapshotChanges().pipe(map(actions=>{
       return actions.map(a=>{

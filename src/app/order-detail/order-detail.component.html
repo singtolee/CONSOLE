@@ -1,0 +1,7 @@
+<p>订单总价: <span>{{order.totalPrice}}</span></p>
+
+<ul>
+  <li *ngFor="let prd of prds">
+    <app-mini-prd-cell [prd]="prd"></app-mini-prd-cell>
+  </li>
+</ul>
