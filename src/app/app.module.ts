@@ -21,6 +21,10 @@ import { PaidOrdersCellComponent } from './paid-orders-cell/paid-orders-cell.com
 import { UserInfoCardComponent } from './user-info-card/user-info-card.component';
 import { OrderDetailComponent } from './order-detail/order-detail.component';
 import { MiniPrdCellComponent } from './mini-prd-cell/mini-prd-cell.component';
+import { BoughtOrderComponent } from './bought-order/bought-order.component';
+import { NewOrderComponent } from './new-order/new-order.component';
+import { BillUploadedOrderComponent } from './bill-uploaded-order/bill-uploaded-order.component';
+import { ArrivedOrderComponent } from './arrived-order/arrived-order.component';
 export const firebaseConfig = environment.firebaseConfig;
 
 @NgModule({
@@ -35,7 +39,11 @@ export const firebaseConfig = environment.firebaseConfig;
     PaidOrdersCellComponent,
     UserInfoCardComponent,
     OrderDetailComponent,
-    MiniPrdCellComponent
+    MiniPrdCellComponent,
+    BoughtOrderComponent,
+    NewOrderComponent,
+    BillUploadedOrderComponent,
+    ArrivedOrderComponent
   ],
   imports: [
     BrowserModule,

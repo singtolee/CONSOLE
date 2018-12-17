@@ -1,4 +1,6 @@
 <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
     <span aria-hidden="true">&times;</span>
 </button>
-<img [src]="image">
+<img [src]="order.billUrl">
+<button *ngIf="!order.paid" type="button" class="btn btn-sm btn-info" (click)="togglePaid(true)" >收到付款</button>
+<button *ngIf="order.paid" type="button" class="btn btn-sm btn-info" (click)="togglePaid(false)" >未收到付款</button>

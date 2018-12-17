@@ -1,41 +1,29 @@
 <div class="container-fluid">
   <div class="row">
 
-    <div class="col-sm bg-secondary">
-      <h3>BILL UPLOADED ORDERS</h3>
-      <ul>
-        <li *ngFor="let billedOrder of billUploadedOrders | async">
-          <app-order-header [order]="billedOrder"></app-order-header>
-        </li>
-      </ul>
-    </div>
-
     <div class="col-sm bg-light">
       <h3>NEW ORDERS</h3>
-      <ul>
-        <li *ngFor="let order of newOrders | async">
-          <app-order-header [order]="order"></app-order-header>
-        </li>
-      </ul>
+      <app-new-order></app-new-order>
+    </div>
+
+    <div class="col-sm bg-secondary">
+      <h3>BILL UPLOADED ORDERS</h3>
+      <app-bill-uploaded-order></app-bill-uploaded-order>
     </div>
 
     <div class="col-sm bg-info">
       <h3>PAID ORDERS</h3>
-      <ul>
-        <li *ngFor="let paidOrder of paidOrders | async">
-          <app-paid-orders-cell [order]="paidOrder"></app-paid-orders-cell>
-        </li>
-      </ul>
+      <app-paid-orders-cell></app-paid-orders-cell>
     </div>
 
     <div class="col-sm bg-success">
       <h3>BOUGHT ORDERS</h3>
-      <ul>
-        <li *ngFor="let boughtOrder of boughtOrders | async">
-          <app-order-header [order]="boughtOrder"></app-order-header>
-        </li>
-      </ul>
+      <app-bought-order></app-bought-order>
     </div>
 
+    <div class="col-sm bg-light">
+      <h3>ARRIVED ORDERS</h3>
+      <app-arrived-order></app-arrived-order>
+    </div>
   </div>
 </div>

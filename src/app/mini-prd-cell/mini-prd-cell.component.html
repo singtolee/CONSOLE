@@ -1,3 +1,5 @@
 <div>
-  <a [href]="urlBuilder()" target="_blank"><img [src]=prd.imageUrl width="50px" height="50"></a><span>{{prd.price}}</span>*<span>{{prd.qty}}</span> <span>商品ID: {{prd.pid}}</span><span>{{prd.colorAndSize}}</span><span>{{prd.prdCnTitle}}</span>
+  <a [href]="urlBuilder()" target="_blank"><img [src]=prd.imageUrl width="50px" height="50"></a>
+  <span>{{prd.price}}</span>*<span class="bg-success">{{prd.qty}}</span> <span>商品ID: {{prd.pid}}</span>
+  <span class="bg-info">{{prd.colorAndSize}}</span><span>{{prd.prdCnTitle}}</span>
 </div>

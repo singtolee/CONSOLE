@@ -1,4 +1,23 @@
-<p>订单总价: <span>{{order.totalPrice}}</span></p>
+<p>订单总价: <span>{{order.grandTotal}}</span> <span>ORDER ID: {{order.key}}</span></p>
+
+<div *ngIf="order.bought" class="input-group input-group-sm">
+    <span class="input-group-text">Estimated weight: {{order.totalWeight}}</span>
+    <span class="input-group-text">Estimated Shipping Cost: {{order.estimatedShippingCost}}</span>
+    <br>
+    <span class="input-group-text">Actual weight: {{order.actualWeight}}</span>
+    <span class="input-group-text">Actual Shipping Cost: {{order.actualShippingCost}}</span>
+  <input type="number" #weight>
+  <button type="button" (click)="updateWeight(weight.value)" class="btn btn-primary btn-sm">UPDATE WEIGHT</button>
+</div>
+
+<button *ngIf="!order.paid" type="button" class="btn btn-sm btn-info ml-2" (click)="togglePaymentStatus(true)" >已付款</button>
+<button *ngIf="order.paid" type="button" class="btn btn-sm btn-danger  ml-2" (click)="togglePaymentStatus(false)" >未付款</button>
+<button *ngIf="!order.bought" type="button" class="btn btn-sm btn-info  ml-2" (click)="toggleBoughtStatus(true)" >已购买</button>
+<button *ngIf="order.bought" type="button" class="btn btn-sm btn-danger  ml-2" (click)="toggleBoughtStatus(false)" >未购买</button>
+<button *ngIf="!order.arrived" type="button" class="btn btn-sm btn-info  ml-2" (click)="toggleArrivedStatus(true)" >已到货</button>
+<button *ngIf="order.arrived" type="button" class="btn btn-sm btn-danger  ml-2" (click)="toggleArrivedStatus(false)" >未到货</button>
+<button *ngIf="!order.done" type="button" class="btn btn-sm btn-info  ml-2" (click)="toggleDoneStatus(true)" >已签收</button>
+<button *ngIf="order.done" type="button" class="btn btn-sm btn-danger  ml-2" (click)="toggleDoneStatus(false)" >未签收</button>
 
 <ul>
   <li *ngFor="let prd of prds">

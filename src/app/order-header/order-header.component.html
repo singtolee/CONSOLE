@@ -1,5 +1,5 @@
 <div>
-  <small>{{convert(order.date) | date:'medium'}}</small>
+  <small>{{convert(order.date) | date:'medium'}}</small><small class="ml-2 font-weight-bold">订单金额:{{order.grandTotal}}</small>
   <br>
   <img *ngIf="order.prdValueBillUploaded" 
   [src]="order.billUrl" height="40px" width="40px"  

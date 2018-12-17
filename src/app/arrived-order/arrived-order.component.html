@@ -1,0 +1,7 @@
+<div>
+  <ul>
+    <li *ngFor="let order of arrivedOrders | async">
+      <small (click)="viewOrder(order)">{{order.date.toDate() | date:'medium'}}</small>
+    </li>
+  </ul>
+</div>

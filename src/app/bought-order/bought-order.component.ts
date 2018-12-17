@@ -4,31 +4,29 @@ import { AliOrder } from '../tools/AliOrder'
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { UserInfoCardComponent } from '../user-info-card/user-info-card.component'
 import { OrderDetailComponent } from '../order-detail/order-detail.component'
 
 @Component({
-  selector: 'app-paid-orders-cell',
-  templateUrl: './paid-orders-cell.component.html',
-  styleUrls: ['./paid-orders-cell.component.css']
+  selector: 'app-bought-order',
+  templateUrl: './bought-order.component.html',
+  styleUrls: ['./bought-order.component.css']
 })
-export class PaidOrdersCellComponent implements OnInit {
-
+export class BoughtOrderComponent implements OnInit {
   dir = "MYORDERS" 
 
-  paidOrders: Observable<AliOrder[]>
-
+  boughtOrders: Observable<AliOrder[]>
   constructor(private db:AngularFirestore,private modalService: NgbModal) { }
 
   ngOnInit() {
-    this.paidOrders = this.loadPaidOrders()
+    this.boughtOrders = this.loadBoughtOrders()
   }
 
-  loadPaidOrders(){
+  loadBoughtOrders(){
     return this.db.collection(this.dir, ref=>{
       return ref.where('done','==',false)
       .where('paid','==',true)
-      .where('bought','==',false)
+      .where('bought','==',true)
+      .where('arrived','==',false)
       .orderBy('date','desc')
     }).snapshotChanges().pipe(map(actions=>{
       return actions.map(a=>{
@@ -41,18 +39,11 @@ export class PaidOrdersCellComponent implements OnInit {
 
   }
 
-  togglePaidStatus(key:string){
-    this.db.collection(this.dir).doc(key).update({'paid':false})
+  viewBoughtOrderDetail(){
   }
 
-  toggleProductsBoughtStatus(key:string){
-    this.db.collection(this.dir).doc(key).update({'bought':true})
-  }
-
-  viewUserById(uid:string){
-    //modal 弹出用户卡，查看用户信息
-    const modalRef = this.modalService.open(UserInfoCardComponent,{centered:true});
-    modalRef.componentInstance.uid = uid;
+  unBought(key:string){
+    this.db.collection(this.dir).doc(key).update({'bought':false})
   }
 
   viewOrder(order:AliOrder){
