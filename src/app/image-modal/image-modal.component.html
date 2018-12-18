@@ -1,6 +1,19 @@
 <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
     <span aria-hidden="true">&times;</span>
 </button>
-<img [src]="order.billUrl">
-<button *ngIf="!order.paid" type="button" class="btn btn-sm btn-info" (click)="togglePaid(true)" >收到付款</button>
-<button *ngIf="order.paid" type="button" class="btn btn-sm btn-info" (click)="togglePaid(false)" >未收到付款</button>
+<div>
+    <div class="row">
+        <div class="col">
+            <h4>PRODUCT BILL</h4>
+            <img [src]="order.billUrl">
+            <button *ngIf="!order.paid" type="button" class="btn btn-sm btn-info" (click)="togglePaid(true)">收到付款</button>
+            <button *ngIf="order.paid" type="button" class="btn btn-sm btn-info" (click)="togglePaid(false)">未收到付款</button>
+        </div>
+        <div *ngIf="order.shippingFeeBillUploaded" class="col">
+            <h4>SHIPPING FEE BILL</h4>
+            <img [src]="order.shippingBillUrl">
+            <button *ngIf="!order.shippingFeePaid" type="button" class="btn btn-sm btn-info" (click)="toggleShippingFeePaid(true)">收到运费付款</button>
+            <button *ngIf="order.shippingFeePaid" type="button" class="btn btn-sm btn-info" (click)="toggleShippingFeePaid(false)">未收到运费付款</button>
+        </div>
+    </div>
+</div>

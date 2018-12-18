@@ -41,8 +41,11 @@ export class OrderDetailComponent implements OnInit {
 
     var roundedWeight = Math.ceil(xx)
 
+    var num:number = Number(xx)
+
+
     var fee = this.calculateShippingCostByWeight(roundedWeight)
-    this.db.collection(this.dir).doc(this.order.key).update({'actualWeight':xx,'actualShippingCost':fee,'arrived':true})
+    this.db.collection(this.dir).doc(this.order.key).update({'actualWeight':num,'actualShippingCost':fee,'arrived':true})
 
   }
 
