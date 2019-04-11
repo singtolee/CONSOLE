@@ -13,7 +13,6 @@
       </li>
     </ul>
     <span class="navbar-text mr-5" *ngIf="auth.user | async as user">
-      {{user.email + " "}}
       <button (click)="auth.signOut()" class="btn btn-outline-danger btn-sm">Log out</button>
     </span>
   </div>

@@ -18,6 +18,7 @@ export class AuthService {
   user:Observable<User>
   error:any
   constructor(private myAuth:AngularFireAuth, private db:AngularFirestore, private router:Router) {
+    //return this.myAuth.user
     this.user = this.myAuth.authState.pipe(switchMap(user=>{
       if(user){
         return this.db.doc<User>(`USERS/${user.uid}`).valueChanges()
