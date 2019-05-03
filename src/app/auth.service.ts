@@ -5,25 +5,19 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
-interface User {
-  uid:string;
-  email:string;
-}
-
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  user:Observable<User>
+  loggedIn:Observable<boolean>
   error:any
   constructor(private myAuth:AngularFireAuth, private db:AngularFirestore, private router:Router) {
-    //return this.myAuth.user
-    this.user = this.myAuth.authState.pipe(switchMap(user=>{
+    this.loggedIn = this.myAuth.authState.pipe(switchMap(user=>{
       if(user){
-        return this.db.doc<User>(`USERS/${user.uid}`).valueChanges()
-      }else{
-        return of(null)
+        return of(true)
+      }else {
+        return of(false)
       }
     }))
   }

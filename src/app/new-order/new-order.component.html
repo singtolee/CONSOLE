@@ -1,8 +1,7 @@
 <div>
   <ul>
     <li *ngFor="let order of newOrders | async">
-      <small *ngIf="!isOver48Hours(order.date.toDate(),order.key)" (click)="viewNewOrderDetail(order)">{{order.date.toDate() | date:'medium'}}</small>
-      <small class="badge badge-warning" *ngIf="isOver30Minutes(order.date.toDate())">提醒付款</small>
+      <small (click)="viewNewOrderDetail(order)">{{order.date.toDate() | date:'medium'}}</small>
     </li>
   </ul>
 </div>

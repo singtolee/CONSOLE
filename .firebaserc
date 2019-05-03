@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "alitoyou-168"
+  },
+  "targets": {
+    "alitoyou-168": {
+      "hosting": {
+        "console": [
+          "alitoyou"
+        ]
+      }
+    }
+  }
+}
