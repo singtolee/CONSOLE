@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { OrderDetailComponent } from '../order-detail/order-detail.component'
 import { ImageModalComponent } from '../image-modal/image-modal.component';
+import { UserInfoCardComponent } from '../user-info-card/user-info-card.component';
 
 @Component({
   selector: 'app-arrived-order',
@@ -48,6 +49,11 @@ export class ArrivedOrderComponent implements OnInit {
     const modalRef = this.modalService.open(ImageModalComponent,{centered:true});
     modalRef.componentInstance.order = order;
 
+  }
+
+  viewUser(uid : String){
+    const modalRef = this.modalService.open(UserInfoCardComponent,{centered:true});
+    modalRef.componentInstance.uid = uid;
   }
 
 }

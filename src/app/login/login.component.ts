@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   password;
 
   constructor(public auth:AuthService,public router:Router) {
-    if(this.auth.user){
+    if(this.auth.loggedIn){
       this.router.navigate(['/orders']);
     }
   }
