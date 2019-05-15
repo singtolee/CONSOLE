@@ -4,7 +4,7 @@ import { AliOrder } from '../tools/AliOrder'
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { OrderDetailComponent } from '../order-detail/order-detail.component'
+import { OrderDetailForBoughtOrderComponent } from '../order-detail-for-bought-order/order-detail-for-bought-order.component';
 
 @Component({
   selector: 'app-bought-order',
@@ -47,7 +47,7 @@ export class BoughtOrderComponent implements OnInit {
   }
 
   viewOrder(order:AliOrder){
-    const modalRef = this.modalService.open(OrderDetailComponent,{centered:true});
+    const modalRef = this.modalService.open(OrderDetailForBoughtOrderComponent,{centered:true});
     modalRef.componentInstance.order = order
   }
 
