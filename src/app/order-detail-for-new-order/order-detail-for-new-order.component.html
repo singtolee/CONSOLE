@@ -1,0 +1,8 @@
+<p>订单总价: <span>{{order.grandTotal}}</span> <span>ORDER ID: {{order.key}}</span></p>
+<p>检查商品是否可以进口泰国，催促用户付款</p>
+<app-user-info-card [uid]="order.uid"></app-user-info-card>
+<ul>
+  <li *ngFor="let prd of prds">
+    <app-mini-prd-cell [prd]="prd"></app-mini-prd-cell>
+  </li>
+</ul>

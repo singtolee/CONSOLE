@@ -1,4 +1,5 @@
 <p>订单总价: <span>{{order.grandTotal}}</span> <span>ORDER ID: {{order.key}}</span></p>
+<app-user-info-card [uid]="order.uid"></app-user-info-card>
 
 <div *ngIf="order.bought" class="input-group input-group-sm">
     <span class="input-group-text">Estimated weight: {{order.totalWeight}}</span>

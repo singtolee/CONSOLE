@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UserInfoCardComponent } from '../user-info-card/user-info-card.component'
-import { OrderDetailComponent } from '../order-detail/order-detail.component'
+import { OrderDetailForPaidOrderComponent } from '../order-detail-for-paid-order/order-detail-for-paid-order.component'
 
 @Component({
   selector: 'app-paid-orders-cell',
@@ -56,7 +56,7 @@ export class PaidOrdersCellComponent implements OnInit {
   }
 
   viewOrder(order:AliOrder){
-    const modalRef = this.modalService.open(OrderDetailComponent,{centered:true});
+    const modalRef = this.modalService.open(OrderDetailForPaidOrderComponent,{centered:true});
     modalRef.componentInstance.order = order
   }
 

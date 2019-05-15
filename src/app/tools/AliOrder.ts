@@ -29,5 +29,13 @@ export class AliOrder {
   cartIdList:string[];
   products:MiniProduct[];
   key:string;
+  //for shipping method
+  localShippingMethod:number;
+  trackId:string;
+
+  //for accounting
+  cnyPrdsFee:number;
+  cnyShippingFee:number;
+
 
 }

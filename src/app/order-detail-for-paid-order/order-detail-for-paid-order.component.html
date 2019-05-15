@@ -1,0 +1,16 @@
+<p>订单总价: <span>{{order.grandTotal}}</span> <span>ORDER ID: {{order.key}}</span></p>
+<app-user-info-card [uid]="order.uid"></app-user-info-card>
+
+<button *ngIf="!order.paid" type="button" class="btn btn-sm btn-info ml-2" (click)="togglePaymentStatus(true)" >已付款</button>
+<button *ngIf="order.paid" type="button" class="btn btn-sm btn-danger  ml-2" (click)="togglePaymentStatus(false)" >未付款</button>
+
+<br>
+<input type="number" placeholder="CNY货款" #prdfee><br>
+<input type="number" placeholder="CNY运费" #shippingfee>
+<button type="button" (click)="setPrdsBought(prdfee.value,shippingfee.value)" class="btn btn-primary btn-sm">已购买商品</button>
+
+<ul>
+  <li *ngFor="let prd of prds">
+    <app-mini-prd-cell [prd]="prd"></app-mini-prd-cell>
+  </li>
+</ul>

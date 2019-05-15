@@ -3,6 +3,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AliOrder } from '../tools/AliOrder'
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { OrderDetailForNewOrderComponent } from '../order-detail-for-new-order/order-detail-for-new-order.component'
 
 @Component({
   selector: 'app-new-order',
@@ -13,7 +15,7 @@ export class NewOrderComponent implements OnInit {
   dir = "MYORDERS"
   newOrders: Observable<AliOrder[]>
 
-  constructor(private db:AngularFirestore) { }
+  constructor(private db:AngularFirestore,private modalService: NgbModal) { }
 
   ngOnInit() {
     this.newOrders = this.loadNewOrders()
@@ -40,36 +42,9 @@ export class NewOrderComponent implements OnInit {
   }
 
   viewNewOrderDetail(order:AliOrder){
-    console.log(order.uid)
+    const modalRef = this.modalService.open(OrderDetailForNewOrderComponent,{centered:true});
+    modalRef.componentInstance.order = order
   }
 
-  remindUserMakePaiment(){
-    console.log("TIME TO SEND PUSH NOTIFICATION")
-  }
-
-  isOver48Hours(orderDate:Date,key:string){
-    var now = new Date()
-    now.setDate(now.getDate()-2)
-    if(now>orderDate){
-      this.deleteUnPaidOrder(key)
-      return true
-    }else {
-      return false
-    }
-  }
-
-  isOver30Minutes(orderDate:Date){
-    var now = new Date()
-    now.setMinutes(now.getMinutes()-30)
-    if(now>orderDate){
-      return true
-    }else{
-      return false
-    }
-  }
-
-  deleteUnPaidOrder(key:string){
-    this.db.collection(this.dir).doc(key).delete()
-  }
 
 }

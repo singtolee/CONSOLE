@@ -25,6 +25,9 @@ import { BoughtOrderComponent } from './bought-order/bought-order.component';
 import { NewOrderComponent } from './new-order/new-order.component';
 import { BillUploadedOrderComponent } from './bill-uploaded-order/bill-uploaded-order.component';
 import { ArrivedOrderComponent } from './arrived-order/arrived-order.component';
+import { OrderDetailForNewOrderComponent } from './order-detail-for-new-order/order-detail-for-new-order.component';
+import { OrderDetailForPaidOrderComponent } from './order-detail-for-paid-order/order-detail-for-paid-order.component';
+import { OrderDetailForBoughtOrderComponent } from './order-detail-for-bought-order/order-detail-for-bought-order.component';
 export const firebaseConfig = environment.firebaseConfig;
 
 @NgModule({
@@ -43,7 +46,10 @@ export const firebaseConfig = environment.firebaseConfig;
     BoughtOrderComponent,
     NewOrderComponent,
     BillUploadedOrderComponent,
-    ArrivedOrderComponent
+    ArrivedOrderComponent,
+    OrderDetailForNewOrderComponent,
+    OrderDetailForPaidOrderComponent,
+    OrderDetailForBoughtOrderComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +64,10 @@ export const firebaseConfig = environment.firebaseConfig;
   entryComponents:[
     ImageModalComponent,
     UserInfoCardComponent,
-    OrderDetailComponent
+    OrderDetailComponent,
+    OrderDetailForNewOrderComponent,
+    OrderDetailForPaidOrderComponent,
+    OrderDetailForBoughtOrderComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
