@@ -24,23 +24,19 @@ export class OrderDetailForBoughtOrderComponent implements OnInit {
   }
 
   setToSelfPicking(){
-    this.db.collection(this.dir).doc(this.order.key).update({'arrived':true,'localShippingMethod':0})
+    this.db.collection(this.dir).doc(this.order.key).update({'localShippingMethod':0,'localShippingMethodSet':true,'shipped':false})
   }
 
   setToEms(){
-    this.db.collection(this.dir).doc(this.order.key).update({'arrived':true,'localShippingMethod':1})
+    this.db.collection(this.dir).doc(this.order.key).update({'localShippingMethod':1,'localShippingMethodSet':true,'shipped':false})
   }
 
   setToKerry(){
-    this.db.collection(this.dir).doc(this.order.key).update({'arrived':true,'localShippingMethod':2})
+    this.db.collection(this.dir).doc(this.order.key).update({'localShippingMethod':2,'localShippingMethodSet':true,'shipped':false})
   }
 
-  setPrdsBought(prdFee,shippingFee){
-    var numPrdFee: number = Number(prdFee);
-    var numShippingfee : number = Number(shippingFee);
-
-    this.db.collection(this.dir).doc(this.order.key).update({'cnyPrdsFee':numPrdFee,'cnyShippingFee':numShippingfee,'bought':true})
-
+  setOrderArrived(){
+    this.db.collection(this.dir).doc(this.order.key).update({'arrived':true,'localShippingMethodSet':false})
   }
 
 }

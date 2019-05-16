@@ -1,0 +1,16 @@
+<p>订单货款: <span>{{order.cnyPrdsFee}}</span> <span>国内运费: {{order.cnyShippingFee}}</span></p>
+<p>订单重量: <span>{{order.actualWeight}}</span> <span>应付运费: {{order.actualShippingCost}}</span></p>
+<app-user-info-card [uid]="order.uid"></app-user-info-card>
+
+<br>
+
+<input type="number" placeholder="货物重量" #orderweight>
+<input type="number" placeholder="应付运费" #selfpickingshippingfee>
+<input type="text" placeholder="运单号" #ordertracking>
+<button type="button" (click)="updateWeightAndShippingFee(orderweight.value,selfpickingshippingfee.value,ordertracking.value)" class="btn btn-primary btn-sm">提交重量和应付运费+运单号</button>
+
+<ul>
+  <li *ngFor="let prd of prds">
+    <app-mini-prd-cell [prd]="prd"></app-mini-prd-cell>
+  </li>
+</ul>

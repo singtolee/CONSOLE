@@ -1,0 +1,12 @@
+<p>订单货款: <span>{{order.cnyPrdsFee}}</span> <span>国内运费: {{order.cnyShippingFee}}</span></p>
+<p>订单重量: <span>{{order.actualWeight}}</span> <span>应付运费: {{order.actualShippingCost}}</span></p>
+<app-user-info-card [uid]="order.uid"></app-user-info-card>
+
+<br>
+<button type="button" (click)="setOrderDone()" class="btn btn-primary btn-sm">订单已完成</button>
+
+<ul>
+  <li *ngFor="let prd of prds">
+    <app-mini-prd-cell [prd]="prd"></app-mini-prd-cell>
+  </li>
+</ul>

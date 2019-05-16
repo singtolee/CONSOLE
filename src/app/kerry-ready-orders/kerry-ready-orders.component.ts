@@ -4,32 +4,32 @@ import { AliOrder } from '../tools/AliOrder'
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { OrderDetailForExpressOrderComponent } from '../order-detail-for-express-order/order-detail-for-express-order.component';
+import { OrderDetailForExpressReadyOrderComponent } from '../order-detail-for-express-ready-order/order-detail-for-express-ready-order.component';
 
 @Component({
-  selector: 'app-kerry-orders',
-  templateUrl: './kerry-orders.component.html',
-  styleUrls: ['./kerry-orders.component.css']
+  selector: 'app-kerry-ready-orders',
+  templateUrl: './kerry-ready-orders.component.html',
+  styleUrls: ['./kerry-ready-orders.component.css']
 })
-export class KerryOrdersComponent implements OnInit {
+export class KerryReadyOrdersComponent implements OnInit {
 
   dir = "MYORDERS" 
 
-  kerryOrders: Observable<AliOrder[]>
+  emsReadyOrders: Observable<AliOrder[]>
   constructor(private db:AngularFirestore,private modalService: NgbModal) { }
 
   ngOnInit() {
-    this.kerryOrders = this.loadKerryOrders()
+    this.emsReadyOrders = this.loadEmsOrders()
   }
 
-  loadKerryOrders(){
+  loadEmsOrders(){
     return this.db.collection(this.dir, ref=>{
       return ref.where('done','==',false)
       .where('paid','==',true)
       .where('bought','==',true)
       .where('arrived','==',true)
       .where('localShippingMethod','==',2)
-      .where('shipped','==',false)
+      .where('shipped','==',true)
       .orderBy('date','desc')
     }).snapshotChanges().pipe(map(actions=>{
       return actions.map(a=>{
@@ -43,7 +43,7 @@ export class KerryOrdersComponent implements OnInit {
   }
 
   viewOrder(order:AliOrder){
-    const modalRef = this.modalService.open(OrderDetailForExpressOrderComponent,{centered:true});
+    const modalRef = this.modalService.open(OrderDetailForExpressReadyOrderComponent,{centered:true});
     modalRef.componentInstance.order = order
   }
 

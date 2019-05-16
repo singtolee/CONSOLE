@@ -30,6 +30,7 @@ export class AliOrder {
   products:MiniProduct[];
   key:string;
   //for shipping method
+  localShippingMethodSet:boolean;
   localShippingMethod:number;
   trackId:string;
 
@@ -39,6 +40,8 @@ export class AliOrder {
 
   //记录此订单包含的全部商品是否已经到齐，暨是否全部运达曼谷
   //allArrivedBkk:boolean;
+
+  shipped: boolean;  //记录订单是否处于可取货状态，对于EMS和KERRY，shipped 为true 时用户可以上传付款单；
 
 
 }

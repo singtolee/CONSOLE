@@ -34,6 +34,13 @@ import { KerryOrdersComponent } from './kerry-orders/kerry-orders.component';
 import { OrderDetailForSelfPickingOrdersComponent } from './order-detail-for-self-picking-orders/order-detail-for-self-picking-orders.component';
 import { OrdersReadyForDeliveryComponent } from './orders-ready-for-delivery/orders-ready-for-delivery.component';
 import { DeliveryComponent } from './delivery/delivery.component';
+import { ReceiveComponent } from './receive/receive.component';
+import { SelfPickingReadyOrdersComponent } from './self-picking-ready-orders/self-picking-ready-orders.component';
+import { EmsReadyOrdersComponent } from './ems-ready-orders/ems-ready-orders.component';
+import { KerryReadyOrdersComponent } from './kerry-ready-orders/kerry-ready-orders.component';
+import { OrderDetailForSelfPickingReadyOrderComponent } from './order-detail-for-self-picking-ready-order/order-detail-for-self-picking-ready-order.component';
+import { OrderDetailForExpressOrderComponent } from './order-detail-for-express-order/order-detail-for-express-order.component';
+import { OrderDetailForExpressReadyOrderComponent } from './order-detail-for-express-ready-order/order-detail-for-express-ready-order.component';
 export const firebaseConfig = environment.firebaseConfig;
 
 @NgModule({
@@ -61,7 +68,14 @@ export const firebaseConfig = environment.firebaseConfig;
     KerryOrdersComponent,
     OrderDetailForSelfPickingOrdersComponent,
     OrdersReadyForDeliveryComponent,
-    DeliveryComponent
+    DeliveryComponent,
+    ReceiveComponent,
+    SelfPickingReadyOrdersComponent,
+    EmsReadyOrdersComponent,
+    KerryReadyOrdersComponent,
+    OrderDetailForSelfPickingReadyOrderComponent,
+    OrderDetailForExpressOrderComponent,
+    OrderDetailForExpressReadyOrderComponent
   ],
   imports: [
     BrowserModule,
@@ -80,7 +94,10 @@ export const firebaseConfig = environment.firebaseConfig;
     OrderDetailForNewOrderComponent,
     OrderDetailForPaidOrderComponent,
     OrderDetailForBoughtOrderComponent,
-    OrderDetailForSelfPickingOrdersComponent
+    OrderDetailForSelfPickingOrdersComponent,
+    OrderDetailForSelfPickingReadyOrderComponent,
+    OrderDetailForExpressOrderComponent,
+    OrderDetailForExpressReadyOrderComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

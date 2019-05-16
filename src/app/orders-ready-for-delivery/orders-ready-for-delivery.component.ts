@@ -27,7 +27,8 @@ export class OrdersReadyForDeliveryComponent implements OnInit {
       return ref.where('done','==',false)
       .where('paid','==',true)
       .where('bought','==',true)
-      .where('arrived','==',false)
+      .where('arrived','==',true)
+      .where('localShippingMethodSet','==',false)
       .orderBy('date','desc')
     }).snapshotChanges().pipe(map(actions=>{
       return actions.map(a=>{

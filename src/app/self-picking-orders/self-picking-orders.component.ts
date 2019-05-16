@@ -29,6 +29,7 @@ export class SelfPickingOrdersComponent implements OnInit {
       .where('bought','==',true)
       .where('arrived','==',true)
       .where('localShippingMethod','==',0)
+      .where('shipped','==',false)
       .orderBy('date','desc')
     }).snapshotChanges().pipe(map(actions=>{
       return actions.map(a=>{
