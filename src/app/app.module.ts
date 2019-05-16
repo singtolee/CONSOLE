@@ -28,6 +28,12 @@ import { ArrivedOrderComponent } from './arrived-order/arrived-order.component';
 import { OrderDetailForNewOrderComponent } from './order-detail-for-new-order/order-detail-for-new-order.component';
 import { OrderDetailForPaidOrderComponent } from './order-detail-for-paid-order/order-detail-for-paid-order.component';
 import { OrderDetailForBoughtOrderComponent } from './order-detail-for-bought-order/order-detail-for-bought-order.component';
+import { SelfPickingOrdersComponent } from './self-picking-orders/self-picking-orders.component';
+import { EmsOrdersComponent } from './ems-orders/ems-orders.component';
+import { KerryOrdersComponent } from './kerry-orders/kerry-orders.component';
+import { OrderDetailForSelfPickingOrdersComponent } from './order-detail-for-self-picking-orders/order-detail-for-self-picking-orders.component';
+import { OrdersReadyForDeliveryComponent } from './orders-ready-for-delivery/orders-ready-for-delivery.component';
+import { DeliveryComponent } from './delivery/delivery.component';
 export const firebaseConfig = environment.firebaseConfig;
 
 @NgModule({
@@ -49,7 +55,13 @@ export const firebaseConfig = environment.firebaseConfig;
     ArrivedOrderComponent,
     OrderDetailForNewOrderComponent,
     OrderDetailForPaidOrderComponent,
-    OrderDetailForBoughtOrderComponent
+    OrderDetailForBoughtOrderComponent,
+    SelfPickingOrdersComponent,
+    EmsOrdersComponent,
+    KerryOrdersComponent,
+    OrderDetailForSelfPickingOrdersComponent,
+    OrdersReadyForDeliveryComponent,
+    DeliveryComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +79,8 @@ export const firebaseConfig = environment.firebaseConfig;
     OrderDetailComponent,
     OrderDetailForNewOrderComponent,
     OrderDetailForPaidOrderComponent,
-    OrderDetailForBoughtOrderComponent
+    OrderDetailForBoughtOrderComponent,
+    OrderDetailForSelfPickingOrdersComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

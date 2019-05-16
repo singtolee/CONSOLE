@@ -37,5 +37,8 @@ export class AliOrder {
   cnyPrdsFee:number;
   cnyShippingFee:number;
 
+  //记录此订单包含的全部商品是否已经到齐，暨是否全部运达曼谷
+  //allArrivedBkk:boolean;
+
 
 }

@@ -4,11 +4,11 @@ import { MiniProduct } from '../tools/MiniProduct'
 import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
-  selector: 'app-order-detail-for-bought-order',
-  templateUrl: './order-detail-for-bought-order.component.html',
-  styleUrls: ['./order-detail-for-bought-order.component.css']
+  selector: 'app-order-detail-for-self-picking-orders',
+  templateUrl: './order-detail-for-self-picking-orders.component.html',
+  styleUrls: ['./order-detail-for-self-picking-orders.component.css']
 })
-export class OrderDetailForBoughtOrderComponent implements OnInit {
+export class OrderDetailForSelfPickingOrdersComponent implements OnInit {
 
   @Input() order;
   dir = "MYORDERS" 
@@ -23,16 +23,10 @@ export class OrderDetailForBoughtOrderComponent implements OnInit {
 
   }
 
-  setToSelfPicking(){
-    this.db.collection(this.dir).doc(this.order.key).update({'arrived':true,'localShippingMethod':0})
-  }
-
-  setToEms(){
-    this.db.collection(this.dir).doc(this.order.key).update({'arrived':true,'localShippingMethod':1})
-  }
-
-  setToKerry(){
-    this.db.collection(this.dir).doc(this.order.key).update({'arrived':true,'localShippingMethod':2})
+  updateWeightAndShippingFee(weight,fee){
+    var numWei:number = Number(weight);
+    var numFee:number = Number(fee);
+    this.db.collection(this.dir).doc(this.order.key).update({'actualWeight':numWei,'actualShippingCost':numFee})
   }
 
   setPrdsBought(prdFee,shippingFee){
