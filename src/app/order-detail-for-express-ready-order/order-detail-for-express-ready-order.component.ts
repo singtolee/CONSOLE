@@ -23,6 +23,10 @@ export class OrderDetailForExpressReadyOrderComponent implements OnInit {
 
   }
 
+  toggleShippingFeePaid(sta:boolean){
+    this.db.collection(this.dir).doc(this.order.key).update({'shippingFeePaid':sta})
+  }
+
   setOrderDone(){
     this.db.collection(this.dir).doc(this.order.key).update({'done':true})
   }
