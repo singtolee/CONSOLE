@@ -24,19 +24,19 @@ export class OrderDetailForBoughtOrderComponent implements OnInit {
   }
 
   setToSelfPicking(){
-    this.db.collection(this.dir).doc(this.order.key).update({'localShippingMethod':0,'localShippingMethodSet':true,'shipped':false})
+    this.db.collection(this.dir).doc(this.order.key).update({'localShippingMethod':0,'localShippingMethodSet':true,})
   }
 
   setToEms(){
-    this.db.collection(this.dir).doc(this.order.key).update({'localShippingMethod':1,'localShippingMethodSet':true,'shipped':false})
+    this.db.collection(this.dir).doc(this.order.key).update({'localShippingMethod':1,'localShippingMethodSet':true,})
   }
 
   setToKerry(){
-    this.db.collection(this.dir).doc(this.order.key).update({'localShippingMethod':2,'localShippingMethodSet':true,'shipped':false})
+    this.db.collection(this.dir).doc(this.order.key).update({'localShippingMethod':2,'localShippingMethodSet':true})
   }
 
   setOrderArrived(){
-    this.db.collection(this.dir).doc(this.order.key).update({'arrived':true,'localShippingMethodSet':false})
+    this.db.collection(this.dir).doc(this.order.key).update({'arrived':true})
   }
 
 }
