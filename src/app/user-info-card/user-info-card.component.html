@@ -1,11 +1,10 @@
-<button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-  <span aria-hidden="true">&times;</span>
-</button>
-<p>{{uid}}</p>
-<div class="card">
-  <p><i class="fas fa-user"></i>{{(userAddress | async)?.consignee}}</p>
-  <p><i class="fas fa-phone"></i>{{(userAddress | async)?.phone}}</p>
-  <p><i class="fas fa-mail-bulk"></i>{{(userAddress | async)?.postCode}}</p>
-  <p><i class="fas fa-city"></i>{{(userAddress | async)?.city}}</p>
-  <p><i class="fas fa-map-marker-alt"></i>{{(userAddress | async)?.address}}</p>
+<div class="card text-white bg-primary">
+  <div class="card-header">USER ID : {{uid}}</div>
+  <div class="card-body">
+    <p class="small"><i class="fas fa-user"></i>{{(userAddress | async)?.consignee}}</p>
+    <p class="small"><i class="fas fa-phone"></i>{{(userAddress | async)?.phone}}</p>
+    <p class="small"><i class="fas fa-mail-bulk"></i>{{(userAddress | async)?.postCode}}</p>
+    <p class="small"><i class="fas fa-city"></i>{{(userAddress | async)?.city}}</p>
+    <p class="small"><i class="fas fa-map-marker-alt"></i>{{(userAddress | async)?.address}}</p>
+  </div>
 </div>

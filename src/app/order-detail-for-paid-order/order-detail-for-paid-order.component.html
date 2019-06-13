@@ -1,8 +1,9 @@
-<p>订单总价: <span>{{order.grandTotal}}</span> <span>ORDER ID: {{order.key}}</span></p>
-<app-user-info-card [uid]="order.uid"></app-user-info-card>
-
+<p class="small">Product Fee:{{order.grandTotal}}</p>
+<p class="small">Order ID : {{order.key}}</p>
 <button *ngIf="!order.paid" type="button" class="btn btn-sm btn-info ml-2" (click)="togglePaymentStatus(true)" >已付款</button>
 <button *ngIf="order.paid" type="button" class="btn btn-sm btn-danger  ml-2" (click)="togglePaymentStatus(false)" >未付款</button>
+
+<app-user-info-card [uid]="order.uid"></app-user-info-card>
 
 <br>
 <input type="number" placeholder="CNY货款" #prdfee><br>

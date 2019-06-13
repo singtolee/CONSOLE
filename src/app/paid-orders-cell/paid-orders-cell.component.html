@@ -1,7 +1,7 @@
 <div>
   <ul>
     <li *ngFor="let order of paidOrders | async">
-      <small>{{order.date.toDate() | date:'medium'}}</small><small class="ml-2 font-weight-bold" (click)="viewOrder(order)">订单金额:{{order.grandTotal}}</small>
+      <small>{{order.date.toDate() | date:'medium'}}</small><small class="ml-2 font-weight-bold" (click)="viewOrder(order)">Amount:{{order.grandTotal}}</small>
     </li>
   </ul>
 </div>

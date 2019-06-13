@@ -1,5 +1,11 @@
-<p>订单总价: <span>{{order.grandTotal}}</span> <span>ORDER ID: {{order.key}}</span></p>
-<p>检查商品是否可以进口泰国，催促用户付款</p>
+<button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+<p class="small">Order Fee: {{order.grandTotal}}Baht</p>
+<p class="small">Order ID: {{order.key}}</p>
+<div class="alert alert-warning" role="alert">
+  Check Contraband, Call User to make payment
+</div>
 <app-user-info-card [uid]="order.uid"></app-user-info-card>
 <ul>
   <li *ngFor="let prd of prds">
