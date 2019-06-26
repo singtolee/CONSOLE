@@ -35,8 +35,10 @@ export class OrderDetailForBoughtOrderComponent implements OnInit {
     this.db.collection(this.dir).doc(this.order.key).update({'localShippingMethod':2,'localShippingMethodSet':true})
   }
 
-  setOrderArrived(){
-    this.db.collection(this.dir).doc(this.order.key).update({'arrived':true})
+  setOrderArrived(actualWeight){
+    var aw:number = Number(actualWeight);
+    //console.log(aw);
+    this.db.collection(this.dir).doc(this.order.key).update({'arrived':true,'actualWeight':aw});
   }
 
 }

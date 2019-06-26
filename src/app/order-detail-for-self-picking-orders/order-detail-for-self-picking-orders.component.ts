@@ -23,10 +23,9 @@ export class OrderDetailForSelfPickingOrdersComponent implements OnInit {
 
   }
 
-  updateWeightAndShippingFee(weight,fee){
-    var numWei:number = Number(weight);
+  updateWeightAndShippingFee(fee){
     var numFee:number = Number(fee);
-    this.db.collection(this.dir).doc(this.order.key).update({'actualWeight':numWei,'actualShippingCost':numFee,'shipped':true})
+    this.db.collection(this.dir).doc(this.order.key).update({'actualShippingCost':numFee,'shipped':true})
   }
 
 }

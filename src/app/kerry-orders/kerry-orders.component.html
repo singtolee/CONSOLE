@@ -1,7 +1,7 @@
 <div>
   <ul>
     <li *ngFor="let order of kerryOrders | async">
-      <small>{{order.date.toDate() | date:'medium'}}</small><small class="ml-2 font-weight-bold" (click)="viewOrder(order)">{{order.key}}</small>
+      <small><span class="badge badge-info">{{order.discountCode}}</span>{{order.date.toDate() | date:'medium'}}</small><small class="ml-2 font-weight-bold" (click)="viewOrder(order)">{{order.key}}</small>
     </li>
   </ul>
 </div>

@@ -19,4 +19,8 @@ export class MiniPrdCellComponent implements OnInit {
     return "https://detail.1688.com/offer/" + this.prd.pid + ".html"
   }
 
+  mobileUrlBuider(){
+    return "https://m.1688.com/offer/" + this.prd.pid + ".html"
+  }
+
 }

@@ -1,4 +1,5 @@
-<p>订单货款: <span>{{order.cnyPrdsFee}}</span> <span>国内运费: {{order.cnyShippingFee}}</span></p>
+<p class="small">订单货款: {{order.cnyPrdsFee}}</p>
+<p class="small">国内运费: {{order.cnyShippingFee}}</p>
 <app-user-info-card [uid]="order.uid"></app-user-info-card>
 
 <br>
@@ -13,7 +14,8 @@
 <div *ngIf="!order.arrived">
 
   <p>商品是否已经到齐了</p>
-  <button type="button" (click)="setOrderArrived()" class="btn btn-success btn-sm">商品已到齐</button>
+  <input type="number" placeholder="货物实际重量" #actualweight>
+  <button type="button" (click)="setOrderArrived(actualweight.value)" class="btn btn-success btn-sm">商品已到齐</button>
 
 </div>
 

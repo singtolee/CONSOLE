@@ -1,7 +1,7 @@
 <div>
   <ul>
     <li *ngFor="let order of billUploadedOrders | async">
-      <small>{{order.date.toDate() | date:'medium'}}</small><small class="ml-2 font-weight-bold" (click)="showbill(order)">订单金额:{{order.grandTotal}}</small>
+      <small>{{order.date.toDate() | date:'medium'}}</small><small class="ml-2 badge badge-danger" (click)="showbill(order)">{{order.grandTotal}}THB</small><span class="badge badge-info">{{order.discountCode}}</span>
     </li>
   </ul>
 </div>

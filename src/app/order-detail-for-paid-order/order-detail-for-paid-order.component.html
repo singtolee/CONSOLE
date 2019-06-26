@@ -1,14 +1,14 @@
 <p class="small">Product Fee:{{order.grandTotal}}</p>
 <p class="small">Order ID : {{order.key}}</p>
-<button *ngIf="!order.paid" type="button" class="btn btn-sm btn-info ml-2" (click)="togglePaymentStatus(true)" >已付款</button>
-<button *ngIf="order.paid" type="button" class="btn btn-sm btn-danger  ml-2" (click)="togglePaymentStatus(false)" >未付款</button>
+<button *ngIf="!order.paid" type="button" class="btn btn-sm btn-info ml-2" (click)="togglePaymentStatus(true)" >PAID</button>
+<button *ngIf="order.paid" type="button" class="btn btn-sm btn-danger  ml-2" (click)="togglePaymentStatus(false)" >NOT PAID</button>
 
 <app-user-info-card [uid]="order.uid"></app-user-info-card>
 
 <br>
-<input type="number" placeholder="CNY货款" #prdfee><br>
-<input type="number" placeholder="CNY运费" #shippingfee>
-<button type="button" (click)="setPrdsBought(prdfee.value,shippingfee.value)" class="btn btn-primary btn-sm">已购买商品</button>
+<input type="number" placeholder="CNY货款PRODUCT FEE IN CNY" #prdfee><br>
+<input type="number" placeholder="CNY运费SHIPPING FEE IN CNY" #shippingfee>
+<button type="button" (click)="setPrdsBought(prdfee.value,shippingfee.value)" class="btn btn-primary btn-sm">PRODUCTS PURCHASED</button>
 
 <ul>
   <li *ngFor="let prd of prds">
