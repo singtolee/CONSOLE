@@ -3,9 +3,12 @@
   </button>
 <p class="small">Order Fee: {{order.grandTotal}}Baht</p>
 <p class="small">Order ID: {{order.key}}</p>
+<p class="small">Evaluated Shipping fee: {{order.evaluatedShippingFee}}</p>
 <div class="alert alert-warning" role="alert">
   Check Contraband, Call User to make payment
 </div>
+<input type="text" placeholder="Estimated Shipping Fee" #eshippingfee>
+  <button type="button" (click)="setEstimatedShippingFee(eshippingfee.value)" class="btn btn-success btn-sm">Inform Shipping Fee</button>
 <app-user-info-card [uid]="order.uid"></app-user-info-card>
 <ul>
   <li *ngFor="let prd of prds">
