@@ -27,6 +27,10 @@ export class OrderDetailForPaidOrderComponent implements OnInit {
     this.db.collection(this.dir).doc(this.order.key).update({'paid':sta})
   }
 
+  setEstimatedShippingFee(eshippingfee){
+    this.db.collection(this.dir).doc(this.order.key).update({'evaluatedShippingFee':eshippingfee});
+  }
+
   setPrdsBought(prdFee,shippingFee){
     var numPrdFee: number = Number(prdFee);
     var numShippingfee : number = Number(shippingFee);

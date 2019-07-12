@@ -23,4 +23,12 @@ export class OrderDetailForNewOrderComponent implements OnInit {
     this.db.collection(this.dir).doc(this.order.key).update({'evaluatedShippingFee':eshippingfee});
   }
 
+  setOrderPaid(){
+    this.db.collection(this.dir).doc(this.order.key).update({'paid':true});
+  }
+
+  deleteOrder(){
+    this.db.collection(this.dir).doc(this.order.key).delete()
+  }
+
 }

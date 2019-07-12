@@ -10,6 +10,8 @@
 <input type="text" placeholder="Estimated Shipping Fee" #eshippingfee>
   <button type="button" (click)="setEstimatedShippingFee(eshippingfee.value)" class="btn btn-success btn-sm">Inform Shipping Fee</button>
 <app-user-info-card [uid]="order.uid"></app-user-info-card>
+<button type="button" (click)="setOrderPaid()" class="btn btn-success btn-sm">SET ORDER PAID</button>
+<button type="button" (click)="deleteOrder()" class="btn btn-danger btn-sm">DELETE ORDER</button>
 <ul>
   <li *ngFor="let prd of prds">
     <app-mini-prd-cell [prd]="prd"></app-mini-prd-cell>
