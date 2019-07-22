@@ -41,6 +41,8 @@ import { KerryReadyOrdersComponent } from './kerry-ready-orders/kerry-ready-orde
 import { OrderDetailForSelfPickingReadyOrderComponent } from './order-detail-for-self-picking-ready-order/order-detail-for-self-picking-ready-order.component';
 import { OrderDetailForExpressOrderComponent } from './order-detail-for-express-order/order-detail-for-express-order.component';
 import { OrderDetailForExpressReadyOrderComponent } from './order-detail-for-express-ready-order/order-detail-for-express-ready-order.component';
+import { SummaryComponent } from './summary/summary.component';
+import { OrderDetailForDoneOrderComponent } from './order-detail-for-done-order/order-detail-for-done-order.component';
 export const firebaseConfig = environment.firebaseConfig;
 
 @NgModule({
@@ -75,7 +77,9 @@ export const firebaseConfig = environment.firebaseConfig;
     KerryReadyOrdersComponent,
     OrderDetailForSelfPickingReadyOrderComponent,
     OrderDetailForExpressOrderComponent,
-    OrderDetailForExpressReadyOrderComponent
+    OrderDetailForExpressReadyOrderComponent,
+    SummaryComponent,
+    OrderDetailForDoneOrderComponent
   ],
   imports: [
     BrowserModule,
@@ -97,6 +101,7 @@ export const firebaseConfig = environment.firebaseConfig;
     OrderDetailForSelfPickingOrdersComponent,
     OrderDetailForSelfPickingReadyOrderComponent,
     OrderDetailForExpressOrderComponent,
+    OrderDetailForDoneOrderComponent,
     OrderDetailForExpressReadyOrderComponent
   ],
   providers: [],

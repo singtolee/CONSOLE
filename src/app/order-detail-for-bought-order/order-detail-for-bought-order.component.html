@@ -14,8 +14,9 @@
 <div *ngIf="!order.arrived">
 
   <p>商品是否已经到齐了</p>
-  <input type="number" placeholder="货物实际重量" #actualweight>
-  <button type="button" (click)="setOrderArrived(actualweight.value)" class="btn btn-success btn-sm">商品已到齐</button>
+  <input type="number" placeholder="Actual Weight" #actualweight>
+  <input type="number" placeholder="TPI COST" #tpicost>
+  <button type="button" (click)="setOrderArrived(actualweight.value, tpicost.value)" class="btn btn-success btn-sm">SET PRODUCT ARRIVED</button>
 
 </div>
 

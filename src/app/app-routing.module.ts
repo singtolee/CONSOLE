@@ -6,11 +6,13 @@ import { ReceiveComponent } from './receive/receive.component';
 import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AuthGuard } from './auth.guard';
+import { SummaryComponent } from './summary/summary.component';
 const routes: Routes = [
   { path: '', redirectTo: '/orders',pathMatch: 'full'},
   { path:'orders', component:OrdersComponent, canActivate:[AuthGuard]},
   { path:'delivery', component:DeliveryComponent, canActivate:[AuthGuard]},
   { path:'receive', component:ReceiveComponent, canActivate:[AuthGuard]},
+  { path:'summary', component:SummaryComponent, canActivate:[AuthGuard]},
   { path:'login', component:LoginComponent},
   { path: "**", component:PageNotFoundComponent, canActivate:[AuthGuard]}
 ];
@@ -26,4 +28,5 @@ export const routingComponents = [
   OrdersComponent,
   DeliveryComponent,
   ReceiveComponent,
+  SummaryComponent,
   PageNotFoundComponent]

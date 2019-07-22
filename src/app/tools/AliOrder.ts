@@ -23,7 +23,7 @@ export class AliOrder {
   actualWeight:number;
   totalQty:number;
   serviceCharge:number;
-  estimatedShippingCost:number;
+  estimatedShippingCost:number;  //use this to save the cost we paid to TPI logistic
   actualShippingCost:number;
   grandTotal:number;
   cartIdList:string[];

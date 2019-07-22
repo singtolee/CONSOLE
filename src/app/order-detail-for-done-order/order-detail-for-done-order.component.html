@@ -1,0 +1,17 @@
+<button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+  <span aria-hidden="true">&times;</span>
+</button>
+<p class="small">ORDER ID: {{order.key}}</p>
+<p class="small">Products Fee(THB): {{order.grandTotal}}฿</p>
+<p class="small">Products Fee(CNY): {{order.cnyPrdsFee}}¥</p>
+<p class="small">PART1 SHIPPING FEE(CNY): {{order.cnyShippingFee}}¥</p>
+<p class="small">TOTAL SHIPPING FEE(THB): {{order.actualShippingCost}}฿</p>
+<p class="small">TPI COST: {{order.estimatedShippingCost}}฿</p>
+<p class="small">TRACKING NUMBER: {{order.trackId}}</p>
+<app-user-info-card [uid]="order.uid"></app-user-info-card>
+<button type="button" (click)="deleteOrder()" class="btn btn-danger btn-sm">DELETE ORDER</button>
+<ul>
+<li *ngFor="let prd of prds">
+  <app-mini-prd-cell [prd]="prd"></app-mini-prd-cell>
+</li>
+</ul>

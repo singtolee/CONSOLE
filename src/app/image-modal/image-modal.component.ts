@@ -24,4 +24,8 @@ export class ImageModalComponent implements OnInit {
     this.db.collection(this.dir).doc(this.order.key).update({'shippingFeePaid':sta})
   }
 
+  deleteOrder(){
+    this.db.collection(this.dir).doc(this.order.key).delete()
+  }
+
 }
