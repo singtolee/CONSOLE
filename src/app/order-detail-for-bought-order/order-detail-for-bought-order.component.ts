@@ -39,7 +39,7 @@ export class OrderDetailForBoughtOrderComponent implements OnInit {
     var aw:number = Number(actualWeight);
     var tCost:number = Number(cost);
     //console.log(aw);
-    this.db.collection(this.dir).doc(this.order.key).update({'arrived':true,'actualWeight':aw,'estimatedShippingCost':tCost});
+    this.db.collection(this.dir).doc(this.order.key).update({'arrived':true,'actualWeight':aw,'parttwo':tCost});
   }
 
 }

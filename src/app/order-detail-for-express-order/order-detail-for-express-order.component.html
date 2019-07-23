@@ -1,10 +1,11 @@
-<p>订单货款: <span>{{order.cnyPrdsFee}}</span> <span>国内运费: {{order.cnyShippingFee}}</span></p>
-<p>实际重量: <span>{{order.actualWeight}}</span></p>
+<p>订单货款: {{order.cnyPrdsFee}}</p>
+<p>Part1 shipping fee: {{order.cnyShippingFee}} CNY</p>
+<p>Part2 Shipping fee: {{order.parttwo}} THB</p>
 <app-user-info-card [uid]="order.uid"></app-user-info-card>
 <br>
-<input type="number" placeholder="应付运费" #selfpickingshippingfee>
-<input type="text" placeholder="运单号" #ordertracking>
-<button type="button" (click)="updateWeightAndShippingFee(selfpickingshippingfee.value,ordertracking.value)" class="btn btn-primary btn-sm">提应付运费+运单号</button>
+<input type="number" placeholder="Part 3 Shipping fee" #partthree>
+<input type="text" placeholder="Track Number" #ordertracking>
+<button type="button" (click)="updateWeightAndShippingFee(partthree.value,ordertracking.value)" class="btn btn-primary btn-sm">SET TRACK NUMBER & P3 SHIPPING FEE</button>
 
 <ul>
   <li *ngFor="let prd of prds">

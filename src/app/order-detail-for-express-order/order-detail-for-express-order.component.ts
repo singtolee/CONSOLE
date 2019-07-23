@@ -25,7 +25,8 @@ export class OrderDetailForExpressOrderComponent implements OnInit {
 
   updateWeightAndShippingFee(fee,trackingId){
     var numFee:number = Number(fee);
-    this.db.collection(this.dir).doc(this.order.key).update({'actualShippingCost':numFee,'shipped':true,'trackId':trackingId})
+    var tot = numFee + this.order.cnyShippingFee*5 + this.order.parttwo
+    this.db.collection(this.dir).doc(this.order.key).update({'actualShippingCost':tot,'partthree':numFee,'shipped':true,'trackId':trackingId})
   }
 
 }

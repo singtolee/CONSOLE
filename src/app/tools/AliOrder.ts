@@ -23,7 +23,7 @@ export class AliOrder {
   actualWeight:number;
   totalQty:number;
   serviceCharge:number;
-  estimatedShippingCost:number;  //use this to save the cost we paid to TPI logistic
+  estimatedShippingCost:number;
   actualShippingCost:number;
   grandTotal:number;
   cartIdList:string[];
@@ -44,6 +44,9 @@ export class AliOrder {
   shipped: boolean;  //记录订单是否处于可取货状态，对于EMS和KERRY，shipped 为true 时用户可以上传付款单；
   discountCode: string; //辨别推销员
   evaluatedShippingFee: string;  //帮助用户评估运费
+
+  parttwo: number;
+  partthree: number;
 
 
 }
