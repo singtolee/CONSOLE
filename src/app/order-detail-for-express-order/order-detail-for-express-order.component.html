@@ -3,9 +3,10 @@
 <p>Part2 Shipping fee: {{order.parttwo}} THB</p>
 <app-user-info-card [uid]="order.uid"></app-user-info-card>
 <br>
+<input type="number" placeholder="Part 2 Shipping fee" #parttwo>
 <input type="number" placeholder="Part 3 Shipping fee" #partthree>
 <input type="text" placeholder="Track Number" #ordertracking>
-<button type="button" (click)="updateWeightAndShippingFee(partthree.value,ordertracking.value)" class="btn btn-primary btn-sm">SET TRACK NUMBER & P3 SHIPPING FEE</button>
+<button type="button" (click)="updateWeightAndShippingFee(parttwo.value,partthree.value,ordertracking.value)" class="btn btn-primary btn-sm">SET TRACK NUMBER & P3 SHIPPING FEE</button>
 
 <ul>
   <li *ngFor="let prd of prds">

@@ -1,7 +1,9 @@
 <div>
   <ul>
     <li *ngFor="let order of newOrders | async">
-      <small (click)="viewNewOrderDetail(order)">{{order.date.toDate() | date:'medium'}}<span class="badge badge-danger">{{order.totalPrice}}THB</span><span class="badge badge-info">{{order.discountCode}}</span></small>
+      <small (click)="viewNewOrderDetail(order)">{{order.date.toDate() | date:'medium'}}<span
+          class="badge badge-danger">{{order.totalPrice}}THB</span><span
+          class="badge badge-info">{{order.discountCode}}</span></small>
     </li>
   </ul>
 </div>
