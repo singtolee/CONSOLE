@@ -7,15 +7,21 @@
             <h4>PRODUCT FEE BILL</h4>
             <p>{{order.key}}</p>
             <button type="button" class="btn btn-sm btn-danger" (click)="deleteOrder()">DELETE</button>
-            <img [src]="order.billUrl">
-            <button *ngIf="!order.paid" type="button" class="btn btn-sm btn-info" (click)="togglePaid(true)">PAYMENT RECEIVED</button>
-            <button *ngIf="order.paid" type="button" class="btn btn-sm btn-info" (click)="togglePaid(false)">PAYMENT NOT RECEIVED</button>
+            <br>
+            <img [src]="order.billUrl" class="img-thumbnail">
+            <br>
+            <button *ngIf="!order.paid" type="button" class="btn btn-sm btn-info" (click)="togglePaid(true)">PAYMENT
+                RECEIVED</button>
+            <button *ngIf="order.paid" type="button" class="btn btn-sm btn-info" (click)="togglePaid(false)">PAYMENT NOT
+                RECEIVED</button>
         </div>
         <div *ngIf="order.shippingFeeBillUploaded" class="col">
             <h4>SHIPPING FEE BILL</h4>
             <img [src]="order.shippingBillUrl">
-            <button *ngIf="!order.shippingFeePaid" type="button" class="btn btn-sm btn-info" (click)="toggleShippingFeePaid(true)">SHIPPING FEE RECEIVED</button>
-            <button *ngIf="order.shippingFeePaid" type="button" class="btn btn-sm btn-info" (click)="toggleShippingFeePaid(false)">SHIPPING FEE NOT RECEIVED</button>
+            <button *ngIf="!order.shippingFeePaid" type="button" class="btn btn-sm btn-info"
+                (click)="toggleShippingFeePaid(true)">SHIPPING FEE RECEIVED</button>
+            <button *ngIf="order.shippingFeePaid" type="button" class="btn btn-sm btn-info"
+                (click)="toggleShippingFeePaid(false)">SHIPPING FEE NOT RECEIVED</button>
         </div>
     </div>
 </div>

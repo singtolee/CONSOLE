@@ -1,17 +1,33 @@
 <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-    <span aria-hidden="true">&times;</span>
-  </button>
-<p class="small">Order Fee: {{order.grandTotal}}Baht</p>
-<p class="small">Order ID: {{order.key}}</p>
-<p class="small">Evaluated Shipping fee: {{order.evaluatedShippingFee}}</p>
+  <span aria-hidden="true">&times;</span>
+</button>
+<ul>
+  <li class="small"> Order ID: {{order.key}}</li>
+  <li class="small">Order Fee: {{order.grandTotal}}Baht</li>
+  <li class="small">Evaluated Shipping fee: {{order.evaluatedShippingFee}}</li>
+</ul>
 <div class="alert alert-warning" role="alert">
-  Check Contraband, Call User to make payment
+  Check Liquid/Flammable/Explosive/Drug/Food, Call User to make payment
 </div>
-<input type="text" placeholder="Estimated Shipping Fee" #eshippingfee>
-  <button type="button" (click)="setEstimatedShippingFee(eshippingfee.value)" class="btn btn-success btn-sm">Inform Shipping Fee</button>
+<div class="input-group mb-3">
+  <input type="text" class="form-control" placeholder="Estimated Shipping Fee" aria-label="Estimated Shipping Fee"
+    aria-describedby="button-addon2" #eshippingfee>
+  <div class="input-group-append">
+    <button class="btn btn-success" type="button" id="button-addon2"
+      (click)="setEstimatedShippingFee(eshippingfee.value)">Inform Shipping Fee</button>
+  </div>
+</div>
 <app-user-info-card [uid]="order.uid"></app-user-info-card>
-<button type="button" (click)="setOrderPaid()" class="btn btn-success btn-sm">SET ORDER PAID</button>
-<button type="button" (click)="deleteOrder()" class="btn btn-danger btn-sm">DELETE ORDER</button>
+<div class="container mt-1 mb-1">
+  <div class="row">
+    <div class="col-sm">
+      <button type="button" (click)="setOrderPaid()" class="btn btn-success btn-sm btn-block">SET ORDER PAID</button>
+    </div>
+    <div class="col-sm">
+      <button type="button" (click)="deleteOrder()" class="btn btn-danger btn-sm btn-block">DELETE ORDER</button>
+    </div>
+  </div>
+</div>
 <ul>
   <li *ngFor="let prd of prds">
     <app-mini-prd-cell [prd]="prd"></app-mini-prd-cell>

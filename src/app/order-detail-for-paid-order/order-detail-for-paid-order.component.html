@@ -1,17 +1,35 @@
-<p class="small">Product Fee:{{order.grandTotal}}</p>
-<p class="small">Total QTY:{{order.totalQty}} ITEMS</p>
-<p class="small">Order ID : {{order.key}}</p>
-<button *ngIf="!order.paid" type="button" class="btn btn-sm btn-info ml-2" (click)="togglePaymentStatus(true)" >PAID</button>
-<button *ngIf="order.paid" type="button" class="btn btn-sm btn-danger  ml-2" (click)="togglePaymentStatus(false)" >NOT PAID</button>
-<input type="text" placeholder="Estimated Shipping Fee" #paidpageeshippingfee>
-  <button type="button" (click)="setEstimatedShippingFee(paidpageeshippingfee.value)" class="btn btn-success btn-sm">Inform Shipping Fee</button>
+<button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+  <span aria-hidden="true">&times;</span>
+</button>
+<ul>
+  <li class="small"> Order ID: {{order.key}}</li>
+  <li class="small">Order Fee: {{order.grandTotal}}Baht</li>
+  <li class="small">Evaluated Shipping fee: {{order.evaluatedShippingFee}}</li>
+  <li class="small">Total QTY:<span class="badge badge-primary">{{order.totalQty}}</span> ITEMS</li>
+</ul>
+<button *ngIf="!order.paid" type="button" class="btn btn-sm btn-info ml-2"
+  (click)="togglePaymentStatus(true)">PAID</button>
+<button *ngIf="order.paid" type="button" class="btn btn-sm btn-danger  ml-2" (click)="togglePaymentStatus(false)">NOT
+  PAID</button>
+<div class="input-group mb-3">
+  <input type="text" class="form-control" placeholder="Estimated Shipping Fee" aria-label="Estimated Shipping Fee"
+    aria-describedby="button-addon2" #paidpageeshippingfee>
+  <div class="input-group-append">
+    <button class="btn btn-success" type="button" id="button-addon2"
+      (click)="setEstimatedShippingFee(paidpageeshippingfee.value)">Inform Shipping Fee</button>
+  </div>
+</div>
 
 <app-user-info-card [uid]="order.uid"></app-user-info-card>
 
 <br>
-<input type="number" placeholder="CNY货款PRODUCT FEE IN CNY" #prdfee><br>
-<input type="number" placeholder="CNY运费SHIPPING FEE IN CNY" #shippingfee>
-<button type="button" (click)="setPrdsBought(prdfee.value,shippingfee.value)" class="btn btn-primary btn-sm">PRODUCTS PURCHASED</button>
+<div class="input-group">
+  <input type="number" placeholder="CNY货款PRODUCT FEE IN CNY" #prdfee>
+  <input type="number" placeholder="CNY运费SHIPPING FEE IN CNY" #shippingfee>
+  <div class="input-group-append">
+      <button type="button" (click)="setPrdsBought(prdfee.value,shippingfee.value)" class="btn btn-primary">PURCHASED</button>
+  </div>
+</div>
 
 <ul>
   <li *ngFor="let prd of prds">

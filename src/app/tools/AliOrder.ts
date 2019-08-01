@@ -48,5 +48,7 @@ export class AliOrder {
   parttwo: number;
   partthree: number;
 
+  apple: boolean;   //用于区别是苹果还是安卓
+
 
 }

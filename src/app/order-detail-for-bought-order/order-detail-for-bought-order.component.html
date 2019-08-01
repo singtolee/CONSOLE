@@ -1,22 +1,41 @@
-<p class="small">订单货款: {{order.cnyPrdsFee}}</p>
-<p class="small">国内运费: {{order.cnyShippingFee}}</p>
+<button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+  <span aria-hidden="true">&times;</span>
+</button>
+<ul>
+  <li class="small"> Order ID: {{order.key}}</li>
+  <li class="small">Order Fee: {{order.grandTotal}}Baht</li>
+  <li class="small">Evaluated Shipping fee: {{order.evaluatedShippingFee}}</li>
+  <li class="small">订单货款: {{order.cnyPrdsFee}}CNY</li>
+  <li class="small">国内运费: {{order.cnyShippingFee}}CNY</li>
+  <li class="small">Actual Weight: {{order.actualWeight}}KG</li>
+  <li class="small">Shipping Cost : {{order.parttwo}}Baht</li>
+</ul>
 <app-user-info-card [uid]="order.uid"></app-user-info-card>
 
 <br>
-
-<div *ngIf="order.arrived">
-    <button type="button" (click)="setToSelfPicking()" class="btn btn-secondary btn-sm">自提</button>
-    <button type="button" (click)="setToEms()" class="btn btn-danger btn-sm">EMS</button>
-    <button type="button" (click)="setToKerry()" class="btn btn-warning btn-sm">KERRY</button>
-
-</div>
+<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups" *ngIf="order.arrived">
+    <div class="btn-group mr-2" role="group" aria-label="First group">
+      <button type="button" class="btn btn-secondary" (click)="setToSelfPicking()" >PICK UP</button>
+    </div>
+    <div class="btn-group mr-2" role="group" aria-label="Second group">
+      <button type="button" class="btn btn-danger" (click)="setToEms()">EMS</button>
+    </div>
+    <div class="btn-group" role="group" aria-label="Third group">
+      <button type="button" class="btn btn-warning" (click)="setToKerry()" >KERRY</button>
+    </div>
+  </div>
 
 <div *ngIf="!order.arrived">
 
   <p>商品是否已经到齐了</p>
-  <input type="number" placeholder="Actual Weight" #actualweight>
-  <input type="number" placeholder="TPI COST" #tpicost>
-  <button type="button" (click)="setOrderArrived(actualweight.value, tpicost.value)" class="btn btn-success btn-sm">SET PRODUCT ARRIVED</button>
+  <div class="input-group">
+    <input type="number" placeholder="Actual Weight" #actualweight>
+    <input type="number" placeholder="Actural Shipping Cost" #tpicost>
+    <div class="input-group-append">
+      <button type="button" (click)="setOrderArrived(actualweight.value, tpicost.value)"
+        class="btn btn-success">ARRIVED</button>
+    </div>
+  </div>
 
 </div>
 
