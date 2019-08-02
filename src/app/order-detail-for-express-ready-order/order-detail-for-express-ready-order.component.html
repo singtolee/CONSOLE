@@ -1,10 +1,26 @@
-<p>订单货款: {{order.cnyPrdsFee}}</p>
-<p>Part1 shipping fee: {{order.cnyShippingFee}} CNY</p>
-<p>Part2 Shipping fee: {{order.parttwo}} THB</p>
-<p>Part3 Shipping fee: {{order.partthree}} THB</p>
-<p>Final Shipping fee: {{order.actualShippingCost}}</p>
-<p>运单号：<span>{{order.trackId}}</span></p>
-<button type="button" (click)="setOrderDone()" class="btn btn-primary btn-sm">订单已完成</button>
+<button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <ul>
+    <li class="small"> 订单货款: {{order.cnyPrdsFee}}</li>
+    <li class="small">Part1 shipping fee: {{order.cnyShippingFee}} CNY</li>
+    <li class="small">Part2 Shipping fee: {{order.parttwo}} THB</li>
+    <li class="small">Part3 Shipping fee: {{order.partthree}} THB</li>
+    <li class="small"><span class="badge badge-info">Final Shipping fee: {{order.actualShippingCost}}</span></li>
+    <li class="small">Actual Weight: {{order.actualWeight}}KG</li>
+    <li class="small">运单号：<span>{{order.trackId}}</span></li>
+  </ul>
+  <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+      <div class="btn-group mr-2" role="group" aria-label="Second group">
+          <button type="button" (click)="toggleShippingFeePaid(true)" class="btn btn-danger btn-sm">SHIPPING FEE PAID</button>
+      </div>
+      <div class="btn-group mr-2" role="group" aria-label="Second group">
+          <button type="button" (click)="toggleShippingFeePaid(false)" class="btn btn-success btn-sm">SHIPPING FEE NOT PAID</button>
+      </div>
+      <div class="btn-group" role="group" aria-label="Third group">
+          <button type="button" (click)="setOrderDone()" class="btn btn-info btn-sm">订单已完成</button>
+      </div>
+    </div>
 <app-user-info-card [uid]="order.uid"></app-user-info-card>
 <br>
 <div class="row">
