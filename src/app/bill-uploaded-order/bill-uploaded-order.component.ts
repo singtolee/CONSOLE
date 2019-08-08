@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ImageModalComponent } from '../image-modal/image-modal.component';
+import { OrderDetailForBillUploadedOrderComponent } from '../order-detail-for-bill-uploaded-order/order-detail-for-bill-uploaded-order.component';
 
 @Component({
   selector: 'app-bill-uploaded-order',
@@ -40,7 +41,7 @@ export class BillUploadedOrderComponent implements OnInit {
   }
 
   showbill(bill:AliOrder){
-    const modalRef = this.modalService.open(ImageModalComponent,{centered:true});
+    const modalRef = this.modalService.open(OrderDetailForBillUploadedOrderComponent,{centered:true});
     modalRef.componentInstance.order = bill;
   }
 

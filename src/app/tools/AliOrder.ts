@@ -49,6 +49,7 @@ export class AliOrder {
   partthree: number;
 
   apple: boolean;   //用于区别是苹果还是安卓
+  yundanhaos : string; //用于记录此订单包含的所有运单号，便于发货时查找
 
 
 }

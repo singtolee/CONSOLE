@@ -43,6 +43,8 @@ import { OrderDetailForExpressOrderComponent } from './order-detail-for-express-
 import { OrderDetailForExpressReadyOrderComponent } from './order-detail-for-express-ready-order/order-detail-for-express-ready-order.component';
 import { SummaryComponent } from './summary/summary.component';
 import { OrderDetailForDoneOrderComponent } from './order-detail-for-done-order/order-detail-for-done-order.component';
+import { PackingListComponent } from './packing-list/packing-list.component';
+import { OrderDetailForBillUploadedOrderComponent } from './order-detail-for-bill-uploaded-order/order-detail-for-bill-uploaded-order.component';
 export const firebaseConfig = environment.firebaseConfig;
 
 @NgModule({
@@ -79,7 +81,9 @@ export const firebaseConfig = environment.firebaseConfig;
     OrderDetailForExpressOrderComponent,
     OrderDetailForExpressReadyOrderComponent,
     SummaryComponent,
-    OrderDetailForDoneOrderComponent
+    OrderDetailForDoneOrderComponent,
+    PackingListComponent,
+    OrderDetailForBillUploadedOrderComponent
   ],
   imports: [
     BrowserModule,
@@ -96,6 +100,7 @@ export const firebaseConfig = environment.firebaseConfig;
     UserInfoCardComponent,
     OrderDetailComponent,
     OrderDetailForNewOrderComponent,
+    OrderDetailForBillUploadedOrderComponent,
     OrderDetailForPaidOrderComponent,
     OrderDetailForBoughtOrderComponent,
     OrderDetailForSelfPickingOrdersComponent,

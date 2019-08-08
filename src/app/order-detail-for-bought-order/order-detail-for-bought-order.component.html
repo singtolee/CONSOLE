@@ -10,6 +10,16 @@
   <li class="small">Actual Weight: {{order.actualWeight}}KG</li>
   <li class="small">Shipping Cost : {{order.parttwo}}Baht</li>
 </ul>
+<div  *ngIf="!order.arrived" class="input-group">
+  <textarea class="form-control" [(ngModel)]="order.yundanhaos" #danhao></textarea>
+  <div class="input-group-append">
+    <button class="btn btn-info" (click)="saveDanhao(danhao.value)" >SAVE TRACKING IDs</button>
+  </div>
+</div>
+<div *ngIf="order.arrived">
+    <textarea class="form-control" value={{order.yundanhaos}} #danhao></textarea>
+</div>
+<br>
 <app-user-info-card [uid]="order.uid"></app-user-info-card>
 
 <br>
@@ -28,6 +38,8 @@
 <div *ngIf="!order.arrived">
 
   <p>商品是否已经到齐了</p>
+  <button type="button" class="btn btn-info btn-block" (click)="openPackingListPage()" >PRINT PACKING LIST</button>
+  <br>
   <div class="input-group">
     <input type="number" placeholder="Actual Weight" #actualweight>
     <input type="number" placeholder="Actural Shipping Cost" #tpicost>

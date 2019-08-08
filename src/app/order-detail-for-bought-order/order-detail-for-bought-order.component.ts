@@ -42,4 +42,13 @@ export class OrderDetailForBoughtOrderComponent implements OnInit {
     this.db.collection(this.dir).doc(this.order.key).update({'arrived':true,'actualWeight':aw,'parttwo':tCost});
   }
 
+  saveDanhao(danhao){
+    //console.log(danhao);
+    this.db.collection(this.dir).doc(this.order.key).update({'yundanhaos':danhao});
+  }
+
+  openPackingListPage(){
+    window.open('http://localhost:4200/packing')
+  }
+
 }
