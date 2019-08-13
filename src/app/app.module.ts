@@ -45,6 +45,10 @@ import { SummaryComponent } from './summary/summary.component';
 import { OrderDetailForDoneOrderComponent } from './order-detail-for-done-order/order-detail-for-done-order.component';
 import { PackingListComponent } from './packing-list/packing-list.component';
 import { OrderDetailForBillUploadedOrderComponent } from './order-detail-for-bill-uploaded-order/order-detail-for-bill-uploaded-order.component';
+import { CartsComponent } from './carts/carts.component';
+import { CartsOrderedComponent } from './carts-ordered/carts-ordered.component';
+import { CartsOpenComponent } from './carts-open/carts-open.component';
+import { ThMiniPrdCellComponent } from './th-mini-prd-cell/th-mini-prd-cell.component';
 export const firebaseConfig = environment.firebaseConfig;
 
 @NgModule({
@@ -83,7 +87,11 @@ export const firebaseConfig = environment.firebaseConfig;
     SummaryComponent,
     OrderDetailForDoneOrderComponent,
     PackingListComponent,
-    OrderDetailForBillUploadedOrderComponent
+    OrderDetailForBillUploadedOrderComponent,
+    CartsComponent,
+    CartsOrderedComponent,
+    CartsOpenComponent,
+    ThMiniPrdCellComponent
   ],
   imports: [
     BrowserModule,

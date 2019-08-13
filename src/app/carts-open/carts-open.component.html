@@ -1,0 +1,7 @@
+<div>
+  <ul>
+    <li *ngFor="let cart of openCarts | async">
+      <p class="small">{{cart.uid}}@{{cart.name}}</p>
+    </li>
+  </ul>
+</div>

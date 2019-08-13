@@ -1,3 +1,8 @@
-<p>
-  {{order.key}}}
-</p>
+<div *ngIf="order | async as item">
+  <ol>
+    <li *ngFor="let prd of item.products">
+        <app-th-mini-prd-cell [prd]="prd"></app-th-mini-prd-cell>
+    </li>
+  </ol>
+
+</div>

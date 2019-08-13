@@ -1,4 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AliOrder } from '../tools/AliOrder';
+import { ActivatedRoute } from '@angular/router'
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-packing-list',
@@ -7,11 +11,24 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class PackingListComponent implements OnInit {
 
-  @Input() order;
+  order: Observable<AliOrder>
+  dir = "MYORDERS" 
+  orderDoc: AngularFirestoreDocument<AliOrder>
 
-  constructor() { }
+  id
+
+  constructor(private route : ActivatedRoute,
+              private db: AngularFirestore) {}
 
   ngOnInit() {
+    this.id = this.route.snapshot.paramMap.get('oid')
+    this.loadOrder()
+
+  }
+
+  loadOrder(){
+    this.orderDoc = this.db.collection(this.dir).doc<AliOrder>(this.id)
+    this.order = this.orderDoc.valueChanges()
   }
 
 }
