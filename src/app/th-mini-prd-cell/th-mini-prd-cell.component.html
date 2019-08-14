@@ -1,4 +1,15 @@
-<div>
-  <p><img [src]=prd.imageUrl width="70px" height="70px"> {{prd.prdTitle}}</p>
-  <p class="small">{{prd.color}}@{{prd.size}}*{{prd.price}}*{{prd.qty}}</p>
+<div class="container">
+  <div class="row">
+    <div class="col col-1"><img [src]=prd.imageUrl width="60px" height="60px"></div>
+    <div class="col col-11">
+      <div class="container">
+        <div class="row"><p>{{prd.prdTitle}}</p></div>
+        <div class="row">
+          <div class="col"><small>{{prd.color}}</small></div>
+          <div class="col"><small>{{prd.size}}</small></div>
+          <div class="col"><small>฿{{prd.price}}*{{prd.qty}}</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

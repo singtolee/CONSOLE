@@ -1,4 +1,5 @@
 import { Component, OnInit , Input} from '@angular/core';
+import { Router } from '@angular/router';
 import { NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import { MiniProduct } from '../tools/MiniProduct'
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -15,7 +16,7 @@ export class OrderDetailForPaidOrderComponent implements OnInit {
 
   prds:MiniProduct[]
 
-  constructor(public activeModal: NgbActiveModal,private db : AngularFirestore) { }
+  constructor(public activeModal: NgbActiveModal,private db : AngularFirestore,private router : Router) { }
 
   ngOnInit() {
 
@@ -37,6 +38,11 @@ export class OrderDetailForPaidOrderComponent implements OnInit {
 
     this.db.collection(this.dir).doc(this.order.key).update({'cnyPrdsFee':numPrdFee,'cnyShippingFee':numShippingfee,'bought':true})
 
+  }
+
+  gotoPrintPage(){
+    this.activeModal.dismiss();
+    this.router.navigate(['/print',this.order.key]);
   }
 
   //var roundedWeight = Math.ceil(xx)

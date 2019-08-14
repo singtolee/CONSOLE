@@ -1,8 +1,22 @@
-<div *ngIf="order | async as item">
-  <ol>
-    <li *ngFor="let prd of item.products">
-        <app-th-mini-prd-cell [prd]="prd"></app-th-mini-prd-cell>
-    </li>
-  </ol>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="mt-3 mb-2">
+        <img src="assets/icon.png" width="50" height="50" alt="">Alitoyou Sourcing Service Co.,Ltd
+    </div>
+    <div>
 
+    </div>
+  </div>
+  <div class="row justify-content-md-center">
+    <div *ngIf="order | async as item">
+      <ol>
+        <li *ngFor="let prd of item.products; let evenRow = even; let oddRow = odd;" class="alert" [ngClass]="{'alert-success':oddRow, 'alert-light':evenRow}">
+          <app-th-mini-prd-cell [prd]="prd"></app-th-mini-prd-cell>
+        </li>
+      </ol>
+    </div>
+  </div>
+  <div class="row justify-content-md-center">
+    ORDER SUMMARY
+  </div>
 </div>
