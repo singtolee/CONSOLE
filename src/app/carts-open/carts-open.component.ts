@@ -24,6 +24,7 @@ export class CartsOpenComponent implements OnInit {
   loadAllCarts(){
     return this.db.collection(this.dir, ref=>{
       return ref.where('ordered','==',false)
+      .orderBy('date','desc')
     }).snapshotChanges().pipe(map(actions=>{
       return actions.map(a=>{
         const data = a.payload.doc.data() as AliCart;

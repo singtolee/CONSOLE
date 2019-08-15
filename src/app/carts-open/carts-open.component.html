@@ -1,7 +1,7 @@
 <div>
   <ol>
     <li *ngFor="let cart of openCarts | async">
-      <p class="small">{{cart.uid}}@{{cart.name}}</p>
+      <p class="small"><span class="badge badge-primary">{{cart.uid}}</span>@{{cart.date.toDate() | date:'medium'}}{{cart.name}}{{cart.thName}}* <span class="badge badge-info">{{cart.totalQty}}</span></p>
     </li>
   </ol>
 </div>

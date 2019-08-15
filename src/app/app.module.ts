@@ -49,6 +49,7 @@ import { CartsComponent } from './carts/carts.component';
 import { CartsOrderedComponent } from './carts-ordered/carts-ordered.component';
 import { CartsOpenComponent } from './carts-open/carts-open.component';
 import { ThMiniPrdCellComponent } from './th-mini-prd-cell/th-mini-prd-cell.component';
+import { UsersListComponent } from './users-list/users-list.component';
 export const firebaseConfig = environment.firebaseConfig;
 
 @NgModule({
@@ -91,7 +92,8 @@ export const firebaseConfig = environment.firebaseConfig;
     CartsComponent,
     CartsOrderedComponent,
     CartsOpenComponent,
-    ThMiniPrdCellComponent
+    ThMiniPrdCellComponent,
+    UsersListComponent
   ],
   imports: [
     BrowserModule,
