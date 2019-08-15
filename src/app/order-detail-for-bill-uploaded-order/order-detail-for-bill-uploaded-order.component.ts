@@ -28,4 +28,8 @@ export class OrderDetailForBillUploadedOrderComponent implements OnInit {
     this.db.collection(this.dir).doc(this.order.key).delete()
   }
 
+  setEstimatedShippingFee(eshippingfee){
+    this.db.collection(this.dir).doc(this.order.key).update({'evaluatedShippingFee':eshippingfee});
+  }
+
 }
