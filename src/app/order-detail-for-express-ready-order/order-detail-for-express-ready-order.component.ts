@@ -31,4 +31,8 @@ export class OrderDetailForExpressReadyOrderComponent implements OnInit {
     this.db.collection(this.dir).doc(this.order.key).update({'done':true})
   }
 
+  updateTrackingId(tid){
+    this.db.collection(this.dir).doc(this.order.key).update({'trackId':tid})
+  }
+
 }

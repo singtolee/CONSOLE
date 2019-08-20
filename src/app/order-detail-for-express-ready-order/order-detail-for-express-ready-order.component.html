@@ -2,14 +2,23 @@
     <span aria-hidden="true">&times;</span>
   </button>
   <ul>
-    <li class="small"> 订单货款: {{order.cnyPrdsFee}}</li>
-    <li class="small">Part1 shipping fee: {{order.cnyShippingFee}} CNY</li>
+    <li class="small"> ORDER ID: {{order.key}}</li>
+    <li class="small"> 订单货款: {{order.cnyPrdsFee}}¥</li>
+    <li class="small">Part1 shipping fee: {{order.cnyShippingFee}}¥</li>
     <li class="small">Part2 Shipping fee: {{order.parttwo}} THB</li>
     <li class="small">Part3 Shipping fee: {{order.partthree}} THB</li>
     <li class="small"><span class="badge badge-info">Final Shipping fee: {{order.actualShippingCost}}</span></li>
     <li class="small">Actual Weight: {{order.actualWeight}}KG</li>
     <li class="small">运单号：<span>{{order.trackId}}</span></li>
   </ul>
+  <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="TRACKING ID" aria-label="Tracking ID"
+        aria-describedby="button-addon2" #tackingid>
+      <div class="input-group-append">
+        <button class="btn btn-success" type="button" id="button-addon2"
+          (click)="updateTrackingId(tackingid.value)">SET TRACKING NUMBER</button>
+      </div>
+    </div>
   <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
       <div class="btn-group mr-2" role="group" aria-label="Second group">
           <button type="button" (click)="toggleShippingFeePaid(true)" class="btn btn-danger btn-sm">SHIPPING FEE PAID</button>
