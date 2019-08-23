@@ -37,6 +37,15 @@
 
 <div>
 
+  <div class="input-group">
+    <input type="number" placeholder="CNY货款PRODUCT FEE IN CNY" #prdfee>
+    <input type="number" placeholder="CNY运费SHIPPING FEE IN CNY" #shippingfee>
+    <div class="input-group-append">
+      <button type="button" (click)="setFees(prdfee.value,shippingfee.value)" class="btn btn-primary">UPDATE
+        FEEs</button>
+    </div>
+  </div>
+
   <p>商品是否已经到齐了</p>
 
   <div class="m-3">

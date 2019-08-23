@@ -55,4 +55,12 @@ export class OrderDetailForBoughtOrderComponent implements OnInit {
     this.router.navigate(['/print',this.order.key]);
   }
 
+  setFees(prdFee,shippingFee){
+    var numPrdFee: number = Number(prdFee);
+    var numShippingfee : number = Number(shippingFee);
+
+    this.db.collection(this.dir).doc(this.order.key).update({'cnyPrdsFee':numPrdFee,'cnyShippingFee':numShippingfee})
+
+  }
+
 }

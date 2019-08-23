@@ -1,9 +1,10 @@
 <div>
   <ul>
     <li *ngFor="let order of billUploadedOrders | async">
-      <small>{{order.date.toDate() | date:'medium'}}</small><small class="ml-2 badge badge-danger"
-        (click)="showbill(order)">{{order.grandTotal}}THB</small><span
-        class="badge badge-info">{{order.discountCode}}</span>
+      <small (click)="showbill(order)"><span *ngIf="order.apple"><i
+            class="fab fa-apple"></i></span>{{order.date.toDate() | date:'medium'}}<span
+          class="badge badge-danger">{{order.grandTotal | number}}THB</span><span
+          class="badge badge-info">{{order.evaluatedShippingFee}}</span></small>
     </li>
   </ul>
 </div>
