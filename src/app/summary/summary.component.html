@@ -1,9 +1,9 @@
 <div>
   <ul>
     <li *ngFor="let order of doneOrders | async">
-      <small (click)="viewNewOrderDetail(order)"><span *ngIf="order.apple"><i
-        class="fab fa-apple"></i></span>{{order.date.toDate() | date:'medium'}}<span
-          class="badge badge-danger">{{order.totalPrice}}THB</span><span
+      <small (click)="viewNewOrderDetail(order)"><span class="badge badge-warning">{{order.uid}}</span><span
+          *ngIf="order.apple"><i class="fab fa-apple"></i></span>{{order.date.toDate() | date:'medium'}}<span
+          class="badge badge-danger">{{order.totalPrice | number}}THB</span><span
           class="badge badge-info">{{order.trackId}}</span></small>
     </li>
   </ul>

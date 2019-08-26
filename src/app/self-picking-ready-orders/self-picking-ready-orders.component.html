@@ -1,7 +1,10 @@
 <div>
     <ul>
       <li *ngFor="let order of selfPickingOrders | async">
-        <small>{{order.date.toDate() | date:'medium'}}</small><small class="ml-2 font-weight-bold" (click)="viewOrder(order)">{{order.key}}</small>
+        <small (click)="viewOrder(order)"><span *ngIf="order.apple"><i
+          class="fab fa-apple"></i></span>{{order.date.toDate() | date:'medium'}}<span
+        class="badge badge-danger">{{order.totalPrice}}THB</span><span
+        class="badge badge-info">{{order.uid}}</span></small>
       </li>
     </ul>
   </div>

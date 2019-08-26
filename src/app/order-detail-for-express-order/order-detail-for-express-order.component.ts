@@ -23,10 +23,11 @@ export class OrderDetailForExpressOrderComponent implements OnInit {
 
   }
 
-  updateWeightAndShippingFee(two,three,trackingId){
+  updateWeightAndShippingFee(one,two,three,trackingId){
+    var partonefee : number = Number(one);
     var parttwofee : number = Number(two);
     var partthreefee:number = Number(three);
-    var tot = parttwofee + this.order.cnyShippingFee*5 + partthreefee;
+    var tot = partonefee + parttwofee + partthreefee;
     this.db.collection(this.dir).doc(this.order.key).update({'actualShippingCost':tot,'partthree':partthreefee,'shipped':true,'trackId':trackingId})
   }
 

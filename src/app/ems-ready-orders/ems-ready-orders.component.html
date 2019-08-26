@@ -1,8 +1,8 @@
 <div>
   <ul>
     <li *ngFor="let order of emsReadyOrders | async">
-      <small>{{order.date.toDate() | date:'medium'}}</small><small class="ml-2 font-weight-bold"
-        (click)="viewOrder(order)">{{order.trackId}}</small>
+      <small (click)="viewOrder(order)"><span *ngIf="order.apple"><i
+        class="fab fa-apple"></i></span>{{order.date.toDate() | date:'medium'}}{{order.trackId}}</small>
       <small *ngIf="order.shippingFeeBillUploaded && !order.shippingFeePaid" (click)="viewBill(order)"
         class="badge badge-info">运费单已上传</small>
       <small *ngIf="order.shippingFeePaid" (click)="viewBill(order)" class="badge badge-secondary">运费已付</small>

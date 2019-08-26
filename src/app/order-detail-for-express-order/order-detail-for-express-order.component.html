@@ -13,12 +13,13 @@
 <app-user-info-card [uid]="order.uid"></app-user-info-card>
 <br>
 <div class="input-group">
+    <input type="number" placeholder="Part 1 THB" #partone>
   <input type="number" placeholder="Part 2 Shipping fee" #parttwo>
   <input type="number" placeholder="Part 3 Shipping fee" #partthree>
   <input type="text" placeholder="Track Number" #ordertracking>
 
   <div class="input-group-append">
-    <button type="button" (click)="updateWeightAndShippingFee(parttwo.value,partthree.value,ordertracking.value)"
+    <button type="button" (click)="updateWeightAndShippingFee(partone.value, parttwo.value, partthree.value, ordertracking.value)"
       class="btn btn-primary">SET TRACK ID & SHIPPING FEE</button>
   </div>
 </div>
