@@ -1,4 +1,5 @@
 import { MiniProduct } from './MiniProduct'
+import { Baoguo } from './Baoguo';
 export class AliOrder {
     uid:string;
   date:Date;
@@ -50,6 +51,8 @@ export class AliOrder {
 
   apple: boolean;   //用于区别是苹果还是安卓
   yundanhaos : string; //用于记录此订单包含的所有运单号，便于发货时查找
+
+  parcels : [Baoguo]
 
 
 }

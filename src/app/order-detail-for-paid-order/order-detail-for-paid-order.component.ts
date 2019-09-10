@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import { MiniProduct } from '../tools/MiniProduct'
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Baoguo } from '../tools/Baoguo';
+import { AliOrder } from '../tools/AliOrder';
 
 @Component({
   selector: 'app-order-detail-for-paid-order',
@@ -11,7 +13,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class OrderDetailForPaidOrderComponent implements OnInit {
 
-  @Input() order;
+  @Input() order: AliOrder;
   dir = "MYORDERS" 
 
   prds:MiniProduct[]
@@ -32,17 +34,40 @@ export class OrderDetailForPaidOrderComponent implements OnInit {
     this.db.collection(this.dir).doc(this.order.key).update({'evaluatedShippingFee':eshippingfee});
   }
 
-  setPrdsBought(prdFee,shippingFee){
-    var numPrdFee: number = Number(prdFee);
-    var numShippingfee : number = Number(shippingFee);
+  setPrdsBought(){
+    this.db.collection(this.dir).doc(this.order.key).update({'bought':true})
 
-    this.db.collection(this.dir).doc(this.order.key).update({'cnyPrdsFee':numPrdFee,'cnyShippingFee':numShippingfee,'bought':true})
+  }
+
+  setOrderArrived(){
+    this.db.collection(this.dir).doc(this.order.key).update({'arrived':true});
+  }
+
+  addParcel(prd,sp){
+    let prdFee = Number(prd)
+    let spf = Number(sp)
+    let parcel = new Baoguo(prdFee,spf)
+    //this.order.parcels.push(parcel)
+    if(Array.isArray(this.order.parcels) && this.order.parcels.length){
+      this.order.parcels.push(parcel)
+      console.log("ADD")
+
+    }else {
+      console.log("SET")
+      console.log(parcel.huokuan)
+      this.order.parcels = [parcel]
+    }
 
   }
 
   gotoPrintPage(){
     this.activeModal.dismiss();
     this.router.navigate(['/print',this.order.key]);
+  }
+
+  saveParcels(){
+    const baoguo = this.order.parcels.map((obj)=> {return Object.assign({}, obj)});
+    this.db.collection(this.dir).doc(this.order.key).update({'parcels':baoguo})
   }
 
   //var roundedWeight = Math.ceil(xx)

@@ -11,6 +11,12 @@
   (click)="togglePaymentStatus(true)">PAID</button>
 <button *ngIf="order.paid" type="button" class="btn btn-sm btn-danger  ml-2" (click)="togglePaymentStatus(false)">NOT
   PAID</button>
+
+  <button type="button" class="btn btn-sm btn-danger  ml-2" (click)="setOrderArrived()">SET ORER ARRIVED</button>
+
+
+
+
 <div class="input-group mb-3">
   <input type="text" class="form-control" placeholder="Estimated Shipping Fee" aria-label="Estimated Shipping Fee"
     aria-describedby="button-addon2" #paidpageeshippingfee>
@@ -21,18 +27,78 @@
 </div>
 
 <div class="m-2">
-    <button type="button" class="btn btn-success btn-block" (click)="gotoPrintPage()" ><i class="fas fa-file-pdf"></i>PRINT PACKING LIST</button>
+  <button type="button" class="btn btn-success btn-block" (click)="gotoPrintPage()"><i class="fas fa-file-pdf"></i>PRINT
+    PACKING LIST</button>
 </div>
 
 <app-user-info-card [uid]="order.uid"></app-user-info-card>
 
 <br>
+<button *ngIf="!order.bought" type="button" (click)="setPrdsBought()" class="btn btn-success btn-block btn-sm">SET ORDER PURCHASED</button>
+<br>
+<div class="container">
+  <table class="table table-sm table-striped">
+    <thead>
+      <tr>
+        <th scope="col">快递</th>
+        <th scope="col">单号</th>
+        <th scope="col">运费</th>
+        <th scope="col">货款</th>
+        <th scope="col">重量</th>
+        <th scope="col">体积</th>
+        <th scope="col">单价</th>
+        <th scope="col">编码</th>
+        <th scope="col">记录</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let parce of order.parcels">
+        <td scope="row">
+          <app-editable-text [(ngModel)]="parce.company" type="text"> </app-editable-text>
+        </td>
+        <td scope="row">
+          <app-editable-text [(ngModel)]="parce.danhao" type="text"> </app-editable-text>
+        </td>
+        <td scope="row">
+          <app-editable-number [(ngModel)]="parce.yunfei" type="text"> </app-editable-number>
+        </td>
+        <td scope="row">
+          <app-editable-number [(ngModel)]="parce.huokuan" type="text"> </app-editable-number>
+        </td>
+        <td scope="row">
+          <app-editable-number [(ngModel)]="parce.weight" type="text"> </app-editable-number>
+        </td>
+        <td scope="row">
+          <app-editable-number [(ngModel)]="parce.size" type="text"> </app-editable-number>
+        </td>
+        <td scope="row">
+          <app-editable-number [(ngModel)]="parce.unitPrice" type="text"> </app-editable-number>
+        </td>
+        <td scope="row">
+          <app-editable-text [(ngModel)]="parce.tpiId" type="text"> </app-editable-text>
+        </td>
+        <td scope="row">
+          <app-editable-text [(ngModel)]="parce.remark" type="text"> </app-editable-text>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button type="button" (click)="saveParcels()" class="btn btn-danger btn-block">SAVE ALL PARCELS</button>
+
+</div>
+
+<br>
+
+
 <div class="input-group">
-  <input type="number" placeholder="CNY货款PRODUCT FEE IN CNY" #prdfee>
-  <input type="number" placeholder="CNY运费SHIPPING FEE IN CNY" #shippingfee>
+  <input type="number" placeholder="PRODUCT(CNY)" #prdfee>
+  <input type="number" placeholder="PART 1 (CNY)" #part1shippingfee>
   <div class="input-group-append">
-      <button type="button" (click)="setPrdsBought(prdfee.value,shippingfee.value)" class="btn btn-primary">PURCHASED</button>
+    <button type="button" (click)="addParcel(prdfee.value,part1shippingfee.value)" class="btn btn-primary">Add
+      Parcel</button>
   </div>
+
 </div>
 
 <ul>

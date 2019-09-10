@@ -56,7 +56,7 @@ export class PaidOrdersCellComponent implements OnInit {
   }
 
   viewOrder(order:AliOrder){
-    const modalRef = this.modalService.open(OrderDetailForPaidOrderComponent,{centered:true});
+    const modalRef = this.modalService.open(OrderDetailForPaidOrderComponent,{size : 'lg', centered:true});
     modalRef.componentInstance.order = order
   }
 
