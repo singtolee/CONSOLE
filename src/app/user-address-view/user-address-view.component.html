@@ -1,0 +1,20 @@
+<div class="card">
+    <div class="card-body">
+      <div class="container">
+        <br>
+
+        <h4>From : ALITOYOU</h4>
+        <h4>Mobile: 0917271197</h4>
+        <h4>Address: Villaggio, 35/1 Soi Bangkadi, Rama2 Road, Bangkhunthian, Bangkok</h4>
+        <h4>Post Code: 10150</h4>
+        <br>
+        <br>
+
+          <h3><i class="fas fa-user"></i>{{(userAddress | async)?.consignee}}</h3>
+          <h4><i class="fas fa-phone"></i>{{(userAddress | async)?.phone}}</h4>
+          <h4><i class="fas fa-mail-bulk"></i>{{(userAddress | async)?.address}}</h4>
+          <h4><i class="fas fa-city"></i>{{(userAddress | async)?.city}}</h4>
+          <h4><i class="fas fa-map-marker-alt"></i>{{(userAddress | async)?.postCode}}</h4>
+      </div>
+    </div>
+  </div>

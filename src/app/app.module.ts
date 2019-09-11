@@ -52,6 +52,8 @@ import { ThMiniPrdCellComponent } from './th-mini-prd-cell/th-mini-prd-cell.comp
 import { UsersListComponent } from './users-list/users-list.component';
 import { EditableTextComponent } from './editable-text/editable-text.component';
 import { EditableNumberComponent } from './editable-number/editable-number.component';
+import { UserAddressViewComponent } from './user-address-view/user-address-view.component';
+import { PackageTableViewComponent } from './package-table-view/package-table-view.component';
 export const firebaseConfig = environment.firebaseConfig;
 
 @NgModule({
@@ -97,7 +99,9 @@ export const firebaseConfig = environment.firebaseConfig;
     ThMiniPrdCellComponent,
     UsersListComponent,
     EditableTextComponent,
-    EditableNumberComponent
+    EditableNumberComponent,
+    UserAddressViewComponent,
+    PackageTableViewComponent
   ],
   imports: [
     BrowserModule,

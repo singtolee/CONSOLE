@@ -12,6 +12,9 @@
   </ul>
 <app-user-info-card [uid]="order.uid"></app-user-info-card>
 <br>
+<button type="button" class="btn btn-success btn-block" (click)="gotoPrintPage()"><i class="fas fa-file-pdf"></i>PRINT
+  PACKING LIST</button>
+<br>
 <div class="input-group">
     <input type="number" placeholder="Part 1 THB" #partone>
   <input type="number" placeholder="Part 2 Shipping fee" #parttwo>

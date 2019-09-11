@@ -1,0 +1,39 @@
+<div class="container">
+    <table class="table table-sm table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Company</th>
+            <th scope="col">PACKAGE ID</th>
+            <th scope="col">Part 1(THB)</th>
+            <th scope="col">Weight(Kg)</th>
+            <th scope="col">Size(m3)</th>
+            <th scope="col">Price/m3</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let parce of parcels">
+            <td scope="row">
+              <p class="small">{{parce.company}}</p>
+            </td>
+            <td scope="row">
+              <p class="small">{{parce.danhao}}</p>
+            </td>
+            <td scope="row">
+              <p class="small">{{toThaiBaht(parce.yunfei)}}</p>
+            </td>
+            <td scope="row">
+              <p class="small">{{parce.weight}}</p>
+            </td>
+            <td scope="row">
+              <p class="small">{{parce.size}}</p>
+            </td>
+            <td scope="row">
+              <p class="small">{{parce.unitPrice}}</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><span>Total Part 1 + part 2 = {{sum() | number}}Baht</span></p>
+
+</div>
