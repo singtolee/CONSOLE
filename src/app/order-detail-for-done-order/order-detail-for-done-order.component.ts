@@ -24,4 +24,8 @@ export class OrderDetailForDoneOrderComponent implements OnInit {
     this.db.collection(this.dir).doc(this.order.key).delete()
   }
 
+  unDoneOrder(){
+    this.db.collection(this.dir).doc(this.order.key).update({'done':false})
+  }
+
 }

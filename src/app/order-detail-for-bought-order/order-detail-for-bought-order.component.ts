@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import { MiniProduct } from '../tools/MiniProduct'
 import { AngularFirestore } from '@angular/fire/firestore';
+import { AliOrder } from '../tools/AliOrder';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class OrderDetailForBoughtOrderComponent implements OnInit {
 
-  @Input() order;
+  @Input() order: AliOrder;
   dir = "MYORDERS" 
 
   prds:MiniProduct[]
@@ -60,6 +61,47 @@ export class OrderDetailForBoughtOrderComponent implements OnInit {
     var numShippingfee : number = Number(shippingFee);
 
     this.db.collection(this.dir).doc(this.order.key).update({'cnyPrdsFee':numPrdFee,'cnyShippingFee':numShippingfee})
+
+  }
+
+  getMyPart1(){
+    var fee = 0;
+    for(var i=0;i<this.order.parcels.length;i++){
+      fee = fee + this.order.parcels[i].yunfei
+    }
+    return fee
+  }
+
+  getUserPart1(){
+    var fee = 0;
+    for(var i=0;i<this.order.parcels.length;i++){
+      if(this.order.parcels[i].yunfei*5 < 50){
+        fee = fee + 50
+      }else {
+        fee = fee + this.order.parcels[i].yunfei*5
+      }
+    }
+    return fee
+  }
+
+  getMyPart2(){
+    var fee = 0
+    for(var i=0;i<this.order.parcels.length;i++){
+      fee = fee + this.order.parcels[i].size*7000
+    }
+    return fee
+  }
+
+  getUserPart2(){
+    var fee = 0
+    for(var i=0;i<this.order.parcels.length;i++){
+      if(this.order.parcels[i].weight*39 > this.order.parcels[i].size*this.order.parcels[i].unitPrice){
+        fee = fee + this.order.parcels[i].weight*39
+      }else {
+        fee = fee + this.order.parcels[i].size*this.order.parcels[i].unitPrice
+      }
+    }
+    return fee
 
   }
 

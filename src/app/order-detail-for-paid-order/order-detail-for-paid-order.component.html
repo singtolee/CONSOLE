@@ -5,8 +5,21 @@
   <li class="small"> Order ID: {{order.key}}</li>
   <li class="small">Order Fee: {{order.grandTotal}}Baht</li>
   <li class="small">Evaluated Shipping fee: {{order.evaluatedShippingFee}}</li>
+  <li class="small">Final Shipping fee: <span class="badge badge-warning">{{order.actualShippingCost}}THB</span></li>
   <li class="small">Total QTY:<span class="badge badge-primary">{{order.totalQty}}</span> ITEMS</li>
 </ul>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <img [src]="order.billUrl" width="100%" height="100%">
+    </div>
+    <div class="col">
+      <img [src]="order.shippingBillUrl" width="100%" height="100%">
+    </div>
+  </div>
+</div>
+
 <button *ngIf="!order.paid" type="button" class="btn btn-sm btn-info ml-2"
   (click)="togglePaymentStatus(true)">PAID</button>
 <button *ngIf="order.paid" type="button" class="btn btn-sm btn-danger  ml-2" (click)="togglePaymentStatus(false)">NOT

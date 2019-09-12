@@ -22,6 +22,7 @@ export class BoughtOrderComponent implements OnInit {
     this.boughtOrders = this.loadBoughtOrders()
   }
 
+  
   loadBoughtOrders(){
     return this.db.collection(this.dir, ref=>{
       return ref.where('done','==',false)
@@ -39,6 +40,36 @@ export class BoughtOrderComponent implements OnInit {
     }))
 
   }
+
+
+
+
+/*
+ loadBoughtOrders(){
+  return this.db.collection(this.dir, ref=>{
+    return ref.where('uid','==',"P2FrRjONfgfMXcU4CFtrfYC43Qj2")
+    .where('paid','==',true)
+    .where('bought','==',true)
+    .orderBy('date','desc')
+  }).snapshotChanges().pipe(map(actions=>{
+    return actions.map(a=>{
+      const data = a.payload.doc.data() as AliOrder;
+      const id = a.payload.doc.id;
+      data.key = id
+      return data;
+    })
+  }))
+
+}
+
+*/
+
+
+
+
+
+
+
 
   viewBoughtOrderDetail(){
   }

@@ -37,4 +37,45 @@ export class OrderDetailForExpressOrderComponent implements OnInit {
     this.db.collection(this.dir).doc(this.order.key).update({'actualShippingCost':tot,'partthree':partthreefee,'shipped':true,'trackId':trackingId})
   }
 
+  getMyPart1(){
+    var fee = 0;
+    for(var i=0;i<this.order.parcels.length;i++){
+      fee = fee + this.order.parcels[i].yunfei
+    }
+    return fee
+  }
+
+  getUserPart1(){
+    var fee = 0;
+    for(var i=0;i<this.order.parcels.length;i++){
+      if(this.order.parcels[i].yunfei*5 < 50){
+        fee = fee + 50
+      }else {
+        fee = fee + this.order.parcels[i].yunfei*5
+      }
+    }
+    return fee
+  }
+
+  getMyPart2(){
+    var fee = 0
+    for(var i=0;i<this.order.parcels.length;i++){
+      fee = fee + this.order.parcels[i].size*7000
+    }
+    return fee
+  }
+
+  getUserPart2(){
+    var fee = 0
+    for(var i=0;i<this.order.parcels.length;i++){
+      if(this.order.parcels[i].weight*39 > this.order.parcels[i].size*this.order.parcels[i].unitPrice){
+        fee = fee + this.order.parcels[i].weight*39
+      }else {
+        fee = fee + this.order.parcels[i].size*this.order.parcels[i].unitPrice
+      }
+    }
+    return fee
+
+  }
+
 }

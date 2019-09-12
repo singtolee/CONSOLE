@@ -5,19 +5,51 @@
   <li class="small"> Order ID: {{order.key}}</li>
   <li class="small">Order Fee: {{order.grandTotal}}Baht</li>
   <li class="small">Evaluated Shipping fee: {{order.evaluatedShippingFee}}</li>
-  <li class="small">订单货款: {{order.cnyPrdsFee}}CNY</li>
-  <li class="small">国内运费: {{order.cnyShippingFee}}CNY</li>
-  <li class="small">Actual Weight: {{order.actualWeight}}KG</li>
-  <li class="small">Shipping Cost : {{order.parttwo}}Baht</li>
+  <li class="small">订单货款: {{order.cnyPrdsFee | number }}CNY</li>
+  <li class="small">实际国内运费: {{getMyPart1() | number}}CNY</li>
+  <li class="small">实际Part 2: {{getMyPart2() | number}}THB</li>
+  <li class="small">User Part 1: {{getUserPart1() | number}}THB</li>
+  <li class="small">User Part 2 : {{getUserPart2() | number}}THB</li>
 </ul>
+
+<div class="container">
+    <table class="table table-sm table-striped">
+        <thead>
+          <tr>
+            <th scope="col">PACKAGE ID</th>
+            <th scope="col">Part1</th>
+            <th scope="col">Weight</th>
+            <th scope="col">Size</th>
+            <th scope="col">Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let parce of order.parcels">
+            <td scope="row">
+              <p class="small">{{parce.danhao}}</p>
+            </td>
+            <td scope="row">
+              <p class="small">{{parce.yunfei}}</p>
+            </td>
+            <td scope="row">
+              <p class="small">{{parce.weight}}</p>
+            </td>
+            <td scope="row">
+              <p class="small">{{parce.size}}</p>
+            </td>
+            <td scope="row">
+              <p class="small">{{parce.unitPrice}}</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+
 <div *ngIf="!order.arrived" class="input-group">
   <textarea class="form-control" [(ngModel)]="order.yundanhaos" #danhao></textarea>
   <div class="input-group-append">
     <button class="btn btn-info" (click)="saveDanhao(danhao.value)">SAVE TRACKING IDs</button>
   </div>
-</div>
-<div *ngIf="order.arrived">
-  <textarea class="form-control" value={{order.yundanhaos}} #danhao></textarea>
 </div>
 <br>
 <app-user-info-card [uid]="order.uid"></app-user-info-card>
@@ -37,22 +69,13 @@
 
 <div>
 
-  <div class="input-group">
-    <input type="number" placeholder="CNY货款PRODUCT FEE IN CNY" #prdfee>
-    <input type="number" placeholder="CNY运费SHIPPING FEE IN CNY" #shippingfee>
-    <div class="input-group-append">
-      <button type="button" (click)="setFees(prdfee.value,shippingfee.value)" class="btn btn-primary">UPDATE
-        FEEs</button>
-    </div>
-  </div>
-
   <p>商品是否已经到齐了</p>
 
   <div class="m-3">
     <button type="button" class="btn btn-success btn-block" (click)="gotoPrintPage()"><i
         class="fas fa-file-pdf"></i>PRINT PACKING LIST</button>
   </div>
-  <div class="input-group">
+  <div *ngIf="!order.arrived" class="input-group">
     <input type="number" placeholder="Actual Weight" #actualweight>
     <input type="number" placeholder="Actural Shipping Cost" #tpicost>
     <div class="input-group-append">

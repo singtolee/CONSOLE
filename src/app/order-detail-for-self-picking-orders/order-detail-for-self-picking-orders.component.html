@@ -1,10 +1,49 @@
 <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-    <span aria-hidden="true">&times;</span>
-  </button>
-<p class="small">订单货款:{{order.cnyPrdsFee}}CNY</p>
-<p class="small">国内运费:{{order.cnyShippingFee}}CNY</p>
-<p class="small">实际重量:{{order.actualWeight}}KG</p>
-<p class="small">Part2 Shipping Cost:{{order.parttwo}}Baht</p>
+  <span aria-hidden="true">&times;</span>
+</button>
+<ul>
+  <li class="small"> Order ID: {{order.key}}</li>
+  <li class="small">Order Fee: {{order.grandTotal}}Baht</li>
+  <li class="small">Evaluated Shipping fee: {{order.evaluatedShippingFee}}</li>
+  <li class="small">订单货款: {{order.cnyPrdsFee | number }}CNY</li>
+  <li class="small">实际国内运费: {{getMyPart1() | number}}CNY</li>
+  <li class="small">实际Part 2: {{getMyPart2() | number}}THB</li>
+  <li class="small">User Part 1: {{getUserPart1() | number}}THB</li>
+  <li class="small">User Part 2 : {{getUserPart2() | number}}THB</li>
+</ul>
+
+<div class="container">
+    <table class="table table-sm table-striped">
+        <thead>
+          <tr>
+            <th scope="col">PACKAGE ID</th>
+            <th scope="col">Part1</th>
+            <th scope="col">Weight</th>
+            <th scope="col">Size</th>
+            <th scope="col">Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let parce of order.parcels">
+            <td scope="row">
+              <p class="small">{{parce.danhao}}</p>
+            </td>
+            <td scope="row">
+              <p class="small">{{parce.yunfei}}</p>
+            </td>
+            <td scope="row">
+              <p class="small">{{parce.weight}}</p>
+            </td>
+            <td scope="row">
+              <p class="small">{{parce.size}}</p>
+            </td>
+            <td scope="row">
+              <p class="small">{{parce.unitPrice}}</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+</div>
 <app-user-info-card [uid]="order.uid"></app-user-info-card>
 <br>
 <div class="input-group mb-3">

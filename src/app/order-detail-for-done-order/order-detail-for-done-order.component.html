@@ -11,6 +11,7 @@
 <p class="small">TRACKING NUMBER: {{order.trackId}}</p>
 <app-user-info-card [uid]="order.uid"></app-user-info-card>
 <button type="button" (click)="deleteOrder()" class="btn btn-danger btn-sm">DELETE ORDER</button>
+<button type="button" (click)="unDoneOrder()" class="btn btn-info btn-sm">UN DONE ORDER</button>
 <ul>
 <li *ngFor="let prd of prds">
   <app-mini-prd-cell [prd]="prd"></app-mini-prd-cell>

@@ -2,15 +2,50 @@
     <span aria-hidden="true">&times;</span>
   </button>
   <ul>
-    <li class="small"> ORDER ID: {{order.key}}</li>
-    <li class="small"> 订单货款: {{order.cnyPrdsFee}}¥</li>
-    <li class="small">Part1 shipping fee: {{order.cnyShippingFee}}¥</li>
-    <li class="small">Part2 Shipping fee: {{order.parttwo}} THB</li>
-    <li class="small">Part3 Shipping fee: {{order.partthree}} THB</li>
-    <li class="small"><span class="badge badge-info">Final Shipping fee: {{order.actualShippingCost}}</span></li>
-    <li class="small">Actual Weight: {{order.actualWeight}}KG</li>
-    <li class="small">运单号：<span>{{order.trackId}}</span></li>
-  </ul>
+      <li class="small"> Order ID: {{order.key}}</li>
+      <li class="small">Order Fee: {{order.grandTotal}}Baht</li>
+      <li class="small">Evaluated Shipping fee: {{order.evaluatedShippingFee}}</li>
+      <li class="small">订单货款: {{order.cnyPrdsFee | number }}CNY</li>
+      <li class="small">实际国内运费: {{getMyPart1() | number}}CNY</li>
+      <li class="small">实际Part 2: {{getMyPart2() | number}}THB</li>
+      <li class="small">User Part 1: {{getUserPart1() | number}}THB</li>
+      <li class="small">User Part 2 : {{getUserPart2() | number}}THB</li>
+      <li class="small"><span class="badge badge-info">Final Shipping fee: {{order.actualShippingCost}}</span></li>
+      <li class="small">运单号：<span>{{order.trackId}}</span></li>
+    </ul>
+    
+    <div class="container">
+        <table class="table table-sm table-striped">
+            <thead>
+              <tr>
+                <th scope="col">PACKAGE ID</th>
+                <th scope="col">Part1</th>
+                <th scope="col">Weight</th>
+                <th scope="col">Size</th>
+                <th scope="col">Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let parce of order.parcels">
+                <td scope="row">
+                  <p class="small">{{parce.danhao}}</p>
+                </td>
+                <td scope="row">
+                  <p class="small">{{parce.yunfei}}</p>
+                </td>
+                <td scope="row">
+                  <p class="small">{{parce.weight}}</p>
+                </td>
+                <td scope="row">
+                  <p class="small">{{parce.size}}</p>
+                </td>
+                <td scope="row">
+                  <p class="small">{{parce.unitPrice}}</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
   <div class="input-group mb-3">
       <input type="text" class="form-control" placeholder="TRACKING ID" aria-label="Tracking ID"
         aria-describedby="button-addon2" #tackingid>
@@ -33,8 +68,10 @@
 <app-user-info-card [uid]="order.uid"></app-user-info-card>
 <br>
 <div class="row">
-    <div *ngIf="order.shippingFeeBillUploaded" class="col">
-        <h4>SHIPPING FEE BILL</h4>
+  <div class="col">
+    <img [src]="order.billUrl" width="100%" height="100%">
+  </div>
+    <div class="col">
         <img [src]="order.shippingBillUrl" width="100%" height="100%">
         <button *ngIf="!order.shippingFeePaid" type="button" class="btn btn-sm btn-info" (click)="toggleShippingFeePaid(true)">收到运费付款</button>
         <button *ngIf="order.shippingFeePaid" type="button" class="btn btn-sm btn-info" (click)="toggleShippingFeePaid(false)">未收到运费付款</button>
