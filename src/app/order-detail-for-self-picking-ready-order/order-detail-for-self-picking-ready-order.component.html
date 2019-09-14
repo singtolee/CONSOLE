@@ -1,62 +1,73 @@
 <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-    <span aria-hidden="true">&times;</span>
+  <span aria-hidden="true">&times;</span>
 </button>
 <ul>
-    <li class="small"> Order ID: {{order.key}}</li>
-    <li class="small">Order Fee: {{order.grandTotal}}Baht</li>
-    <li class="small">Evaluated Shipping fee: {{order.evaluatedShippingFee}}</li>
-    <li class="small">订单货款: {{order.cnyPrdsFee | number }}CNY</li>
-    <li class="small">实际国内运费: {{getMyPart1() | number}}CNY</li>
-    <li class="small">实际Part 2: {{getMyPart2() | number}}THB</li>
-    <li class="small">User Part 1: {{getUserPart1() | number}}THB</li>
-    <li class="small">User Part 2 : {{getUserPart2() | number}}THB</li>
-    <li class="small"><span class="badge badge-info">Final Shipping fee: {{order.actualShippingCost}}</span></li>
-  </ul>
-  
-  <div class="container">
-      <table class="table table-sm table-striped">
-          <thead>
-            <tr>
-              <th scope="col">PACKAGE ID</th>
-              <th scope="col">Part1</th>
-              <th scope="col">Weight</th>
-              <th scope="col">Size</th>
-              <th scope="col">Price</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let parce of order.parcels">
-              <td scope="row">
-                <p class="small">{{parce.danhao}}</p>
-              </td>
-              <td scope="row">
-                <p class="small">{{parce.yunfei}}</p>
-              </td>
-              <td scope="row">
-                <p class="small">{{parce.weight}}</p>
-              </td>
-              <td scope="row">
-                <p class="small">{{parce.size}}</p>
-              </td>
-              <td scope="row">
-                <p class="small">{{parce.unitPrice}}</p>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-  </div>
+  <li class="small"> Order ID: {{order.key}}</li>
+  <li class="small">Order Fee: {{order.grandTotal}}Baht</li>
+  <li class="small">Evaluated Shipping fee: {{order.evaluatedShippingFee}}</li>
+  <li class="small">订单货款: {{order.cnyPrdsFee | number }}CNY</li>
+  <li class="small">实际国内运费: {{getMyPart1() | number}}CNY</li>
+  <li class="small">实际Part 2: {{getMyPart2() | number}}THB</li>
+  <li class="small">User Part 1: {{getUserPart1() | number}}THB</li>
+  <li class="small">User Part 2 : {{getUserPart2() | number}}THB</li>
+  <li class="small"><span class="badge badge-info">Final Shipping fee: {{order.actualShippingCost}}</span></li>
+</ul>
 
-<div *ngIf="order.shippingFeeBillUploaded">
-  <div class="row">
-    <div class="col">
-        <img [src]="order.shippingBillUrl" alt="Shipping fee bill" height="200">
-    </div>
+<div class="container">
+  <table class="table table-sm table-striped">
+    <thead>
+      <tr>
+        <th scope="col">PACKAGE ID</th>
+        <th scope="col">Part1</th>
+        <th scope="col">Weight</th>
+        <th scope="col">Size</th>
+        <th scope="col">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let parce of order.parcels">
+        <td scope="row">
+          <p class="small">{{parce.danhao}}</p>
+        </td>
+        <td scope="row">
+          <p class="small">{{parce.yunfei}}</p>
+        </td>
+        <td scope="row">
+          <p class="small">{{parce.weight}}</p>
+        </td>
+        <td scope="row">
+          <p class="small">{{parce.size}}</p>
+        </td>
+        <td scope="row">
+          <p class="small">{{parce.unitPrice}}</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="row">
+  <div class="col">
+    <img [src]="order.billUrl" width="100%" height="100%">
+  </div>
+  <div class="col">
+    <img [src]="order.shippingBillUrl" width="100%" height="100%">
   </div>
 </div>
 <app-user-info-card [uid]="order.uid"></app-user-info-card>
 
 <br>
-<button type="button" (click)="setOrderDone()" class="btn btn-danger btn-sm btn-block">订单已完成</button>
+<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+  <div class="btn-group mr-2" role="group" aria-label="Second group">
+      <button type="button" (click)="toggleShippingFeePaid(true)" class="btn btn-danger btn-sm">SHIPPING FEE PAID</button>
+  </div>
+  <div class="btn-group mr-2" role="group" aria-label="Second group">
+      <button type="button" (click)="toggleShippingFeePaid(false)" class="btn btn-success btn-sm">SHIPPING FEE NOT PAID</button>
+  </div>
+  <div class="btn-group" role="group" aria-label="Third group">
+      <button type="button" (click)="setOrderDone()" class="btn btn-info btn-sm">订单已完成</button>
+  </div>
+</div>
 
 <ul>
   <li *ngFor="let prd of prds">

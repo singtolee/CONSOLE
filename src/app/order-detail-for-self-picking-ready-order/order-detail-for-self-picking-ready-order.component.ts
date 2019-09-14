@@ -27,6 +27,10 @@ export class OrderDetailForSelfPickingReadyOrderComponent implements OnInit {
     this.db.collection(this.dir).doc(this.order.key).update({'done':true})
   }
 
+  toggleShippingFeePaid(sta:boolean){
+    this.db.collection(this.dir).doc(this.order.key).update({'shippingFeePaid':sta})
+  }
+
   getMyPart1(){
     var fee = 0;
     for(var i=0;i<this.order.parcels.length;i++){

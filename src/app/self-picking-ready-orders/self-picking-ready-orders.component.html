@@ -3,7 +3,7 @@
       <li *ngFor="let order of selfPickingOrders | async">
         <small (click)="viewOrder(order)"><span *ngIf="order.apple"><i
           class="fab fa-apple"></i></span>{{order.date.toDate() | date:'medium'}}<span
-        class="badge badge-danger">{{order.totalPrice}}THB</span><span
+        class="badge badge-danger">{{order.totalPrice | number}}THB</span> <span class="badge badge-primary">{{order.actualShippingCost | number}}THB</span> <span
         class="badge badge-info">{{order.uid}}</span></small>
       </li>
     </ul>
