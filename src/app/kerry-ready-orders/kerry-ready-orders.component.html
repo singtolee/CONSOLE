@@ -1,12 +1,13 @@
 <div>
-    <ul>
-      <li *ngFor="let order of emsReadyOrders | async">
+  <ul>
+    <li *ngFor="let order of emsReadyOrders | async">
 
-        <small (click)="viewOrder(order)"><span *ngIf="order.apple"><i
-          class="fab fa-apple"></i></span>{{order.date.toDate() | date:'medium'}}<span class="badge badge-warning">{{order.actualShippingCost | number}}THB</span>{{order.trackId}}</small>
-        <small *ngIf="order.shippingFeeBillUploaded && !order.shippingFeePaid" (click)="viewBill(order)"
-          class="badge badge-info">运费单已上传</small>
-        <small *ngIf="order.shippingFeePaid" (click)="viewBill(order)" class="badge badge-secondary">运费已付</small>
-      </li>
-    </ul>
-  </div>
+      <small (click)="viewOrder(order)"><span *ngIf="order.apple"><i
+            class="fab fa-apple"></i></span>{{order.date.toDate() | date:'medium'}} <span class="badge badge-danger">{{order.uid}}</span><span
+          class="badge badge-warning">{{order.actualShippingCost | number}}THB</span>{{order.trackId}}</small>
+      <small *ngIf="order.shippingFeeBillUploaded && !order.shippingFeePaid" (click)="viewBill(order)"
+        class="badge badge-info">BILL</small>
+      <small *ngIf="order.shippingFeePaid" (click)="viewBill(order)" class="badge badge-secondary">PAID</small>
+    </li>
+  </ul>
+</div>

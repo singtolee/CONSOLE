@@ -19,7 +19,7 @@ export class EditableTextComponent implements ControlValueAccessor {
   @Input() required: boolean = true
   private _value : string = ""
   private preValue : string = ""
-  private editing : boolean = false
+  public editing : boolean = false
   public onChange : any = Function.prototype
   public onTouched: any = Function.prototype
 

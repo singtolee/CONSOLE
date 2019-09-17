@@ -13,6 +13,10 @@
       <li class="small"><span class="badge badge-info">Final Shipping fee: {{order.actualShippingCost}}</span></li>
       <li class="small">运单号：<span>{{order.trackId}}</span></li>
     </ul>
+
+    <br>
+    <button type="button" class="btn btn-success btn-block" (click)="gotoPrintPage()"><i class="fas fa-file-pdf"></i>PRINT
+      PACKING LIST</button>
     
     <div class="container">
         <table class="table table-sm table-striped">
@@ -73,8 +77,6 @@
   </div>
     <div class="col">
         <img [src]="order.shippingBillUrl" width="100%" height="100%">
-        <button *ngIf="!order.shippingFeePaid" type="button" class="btn btn-sm btn-info" (click)="toggleShippingFeePaid(true)">收到运费付款</button>
-        <button *ngIf="order.shippingFeePaid" type="button" class="btn btn-sm btn-info" (click)="toggleShippingFeePaid(false)">未收到运费付款</button>
     </div>
 </div>
 <ul>
