@@ -1,0 +1,8 @@
+<button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+  <span aria-hidden="true">&times;</span>
+</button>
+<ul>
+  <li *ngFor="let prd of products">
+    <app-mini-prd-cell [prd]="prd"></app-mini-prd-cell>
+  </li>
+</ul>

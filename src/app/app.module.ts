@@ -54,6 +54,10 @@ import { EditableTextComponent } from './editable-text/editable-text.component';
 import { EditableNumberComponent } from './editable-number/editable-number.component';
 import { UserAddressViewComponent } from './user-address-view/user-address-view.component';
 import { PackageTableViewComponent } from './package-table-view/package-table-view.component';
+import { PackageManagerComponent } from './package-manager/package-manager.component';
+import { OrderPackagesCellComponent } from './order-packages-cell/order-packages-cell.component';
+import { ProductsListViewComponent } from './products-list-view/products-list-view.component';
+import { PopOutWindowComponent } from './pop-out-window/pop-out-window.component';
 export const firebaseConfig = environment.firebaseConfig;
 
 @NgModule({
@@ -101,7 +105,11 @@ export const firebaseConfig = environment.firebaseConfig;
     EditableTextComponent,
     EditableNumberComponent,
     UserAddressViewComponent,
-    PackageTableViewComponent
+    PackageTableViewComponent,
+    PackageManagerComponent,
+    OrderPackagesCellComponent,
+    ProductsListViewComponent,
+    PopOutWindowComponent
   ],
   imports: [
     BrowserModule,
@@ -125,7 +133,9 @@ export const firebaseConfig = environment.firebaseConfig;
     OrderDetailForSelfPickingReadyOrderComponent,
     OrderDetailForExpressOrderComponent,
     OrderDetailForDoneOrderComponent,
-    OrderDetailForExpressReadyOrderComponent
+    OrderDetailForExpressReadyOrderComponent,
+    ProductsListViewComponent,
+    PopOutWindowComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

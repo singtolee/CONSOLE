@@ -10,6 +10,7 @@ import { SummaryComponent } from './summary/summary.component';
 import { CartsComponent } from './carts/carts.component';
 import { PackingListComponent } from './packing-list/packing-list.component';
 import { UsersListComponent } from './users-list/users-list.component';
+import { PackageManagerComponent } from './package-manager/package-manager.component';
 const routes: Routes = [
   { path: '', redirectTo: '/orders',pathMatch: 'full'},
   { path:'orders', component:OrdersComponent, canActivate:[AuthGuard]},
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'carts', component:CartsComponent, canActivate:[AuthGuard]},
   { path: 'print/:oid', component:PackingListComponent, canActivate:[AuthGuard]},
   { path: 'users', component:UsersListComponent, canActivate:[AuthGuard]},
+  { path: 'packages',component:PackageManagerComponent, canActivate:[AuthGuard]},
   { path:'login', component:LoginComponent},
   { path: "**", component:PageNotFoundComponent, canActivate:[AuthGuard]}
 ];
@@ -40,4 +42,5 @@ export const routingComponents = [
   CartsComponent,
   PackingListComponent,
   UsersListComponent,
+  PackageManagerComponent,
   PageNotFoundComponent]

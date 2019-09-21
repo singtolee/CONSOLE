@@ -1,0 +1,7 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 col-sm-6 col-xl-4" *ngFor="let order of myOrders | async">
+      <app-order-packages-cell [order]="order"></app-order-packages-cell>
+    </div>
+  </div>
+</div>
