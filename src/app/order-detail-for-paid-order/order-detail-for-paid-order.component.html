@@ -1,23 +1,19 @@
 <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
   <span aria-hidden="true">&times;</span>
 </button>
-<ul>
-  <li class="small"> Order ID: {{order.key}}</li>
-  <li class="small">Order Fee: {{order.grandTotal}}Baht</li>
-  <li class="small">Evaluated Shipping fee: {{order.evaluatedShippingFee}}</li>
-  <li class="small">Final Shipping fee: <span class="badge badge-warning">{{order.actualShippingCost}}THB</span></li>
-  <li class="small">Total QTY:<span class="badge badge-primary">{{order.totalQty}}</span> ITEMS</li>
-</ul>
 
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <img [src]="order.billUrl" width="100%" height="100%">
-    </div>
-    <div class="col">
-      <img [src]="order.shippingBillUrl" width="100%" height="100%">
-    </div>
+<div class="row">
+  <div class="col">
+      <ul>
+          <li class="small"> Order ID: {{order.key}}</li>
+          <li class="small">Order Fee: {{order.grandTotal}}Baht</li>
+          <li class="small">Evaluated Shipping fee: {{order.evaluatedShippingFee}}</li>
+          <li class="small">Final Shipping fee: <span class="badge badge-warning">{{order.actualShippingCost}}THB</span></li>
+          <li class="small">Total QTY:<span class="badge badge-primary">{{order.totalQty}}</span> ITEMS</li>
+        </ul>
   </div>
+  <div class="col"><img [src]="order.billUrl" width="100%" height="100%"></div>
+  <div class="col"><img [src]="order.shippingBillUrl" width="100%" height="100%"></div>
 </div>
 
 <button *ngIf="!order.paid" type="button" class="btn btn-sm btn-info ml-2"
@@ -53,15 +49,15 @@
   <table class="table table-sm table-striped">
     <thead>
       <tr>
-        <th scope="col">快递</th>
-        <th scope="col">单号</th>
-        <th scope="col">运费</th>
-        <th scope="col">货款</th>
-        <th scope="col">重量</th>
-        <th scope="col">体积</th>
-        <th scope="col">单价</th>
-        <th scope="col">三维</th>
-        <th scope="col">状态</th>
+        <th scope="col" class="small">快递</th>
+        <th scope="col" class="small">单号</th>
+        <th scope="col" class="small">运费</th>
+        <th scope="col" class="small">货款</th>
+        <th scope="col" class="small">重量</th>
+        <th scope="col" class="small">体积</th>
+        <th scope="col" class="small">单价</th>
+        <th scope="col" class="small">三维</th>
+        <th scope="col" class="small">状态</th>
       </tr>
     </thead>
     <tbody>

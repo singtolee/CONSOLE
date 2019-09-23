@@ -4,7 +4,7 @@ export class Baoguo {
 
     constructor(public prdFee: number, public part1ShippingFee : number){
         this.company = "ZTKD"
-        this.danhao = "tracking ID"
+        this.danhao = "trackingID"
         this.yunfei = part1ShippingFee
         this.huokuan = prdFee
         this.weight = 0

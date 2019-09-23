@@ -1,19 +1,16 @@
-<div class="card text-white bg-primary">
-  <div class="card-header">USER ID : {{uid}}</div>
+<div class="card text-white bg-info">
   <div class="card-body">
     <div class="container">
       <div class="row">
         <div class="col-sm">
+          <p class="small"><i class="fas fa-id-card"></i>{{uid}}</p>
           <p class="small"><i class="fas fa-user"></i>{{(userAddress | async)?.consignee}}</p>
           <p class="small"><i class="fas fa-phone"></i>{{(userAddress | async)?.phone}}</p>
+        </div>
+        <div class="col-sm">
           <p class="small"><i class="fas fa-mail-bulk"></i>{{(userAddress | async)?.postCode}}</p>
           <p class="small"><i class="fas fa-city"></i>{{(userAddress | async)?.city}}</p>
           <p class="small"><i class="fas fa-map-marker-alt"></i>{{(userAddress | async)?.address}}</p>
-        </div>
-        <div class="col-sm">
-          <p class="small">
-            {{(userAddress | async)?.consignee}}{{(userAddress | async)?.phone}}{{(userAddress | async)?.address}}{{(userAddress | async)?.city}}{{(userAddress | async)?.postCode}}
-          </p>
         </div>
       </div>
     </div>
