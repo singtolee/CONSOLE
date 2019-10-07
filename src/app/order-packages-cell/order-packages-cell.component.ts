@@ -5,6 +5,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ProductsListViewComponent } from '../products-list-view/products-list-view.component';
 import { PopOutWindowComponent } from '../pop-out-window/pop-out-window.component';
+import { MiniProduct } from '../tools/MiniProduct';
 
 @Component({
   selector: 'app-order-packages-cell',
@@ -16,9 +17,14 @@ export class OrderPackagesCellComponent implements OnInit {
   @Input() order:AliOrder
   dir = "MYORDERS" 
 
+  prdNames : MiniProduct[]
+
   constructor(private db : AngularFirestore, private modalService: NgbModal,private router : Router) { }
 
   ngOnInit() {
+    //this.prdNames = [this.order.products[0]]
+    this.prepareProductsNames()
+  
   }
 
   undateParcelsInfo(){
@@ -43,5 +49,17 @@ export class OrderPackagesCellComponent implements OnInit {
     
 
   }
+
+  prepareProductsNames(){
+    //检查有几个PID，过滤重复的商品名
+    this.prdNames = [this.order.products[0]]
+    let ppds = this.order.products
+    for(let i = 1, len = ppds.length;i<len;i++){
+      ppds[i].pid !== ppds[i-1].pid && this.prdNames.push(ppds[i])
+    }
+
+
+  }
+
 
 }

@@ -18,6 +18,16 @@
         <button type="button" (click)="setOrderArrived()" class="btn btn-sm btn-primary btn-block">SET ARRIVED</button>
       </div>
     </div>
+    <div class="row">
+      <ul>
+        <li *ngFor="let prd of prdNames" class="small">
+          {{prd.prdCnTitle}}{{prd.pid}}
+        </li>
+      </ul>
+    </div>
+
+
+
   </div>
   <div class="card-body">
     <table class="table table-sm table-striped">
