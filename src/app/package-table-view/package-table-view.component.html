@@ -6,8 +6,7 @@
             <th scope="col" class="small">PACKAGE ID</th>
             <th scope="col" class="small">Part 1(THB)</th>
             <th scope="col" class="small">Weight(Kg)</th>
-            <th scope="col" class="small">Size(m3)</th>
-            <th scope="col" class="small">Dimension(cm)</th>
+            <th scope="col" class="small">Size(cm)</th>
             <th scope="col" class="small">Price/m3</th>
             <th scope="col" class="small">Note</th>
           </tr>
@@ -27,10 +26,7 @@
               <p class="small">{{parce.weight}}</p>
             </td>
             <td scope="row">
-              <p class="small">{{parce.size}}</p>
-            </td>
-            <td class="row">
-              <p class="small">{{parce.tpiId}}</p>
+              <p class="small">{{parce.box_l}}*{{parce.box_h}}*{{parce.box_w}}</p>
             </td>
             <td scope="row">
               <p class="small">{{parce.unitPrice}}</p>

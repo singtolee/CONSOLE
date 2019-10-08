@@ -6,6 +6,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ProductsListViewComponent } from '../products-list-view/products-list-view.component';
 import { PopOutWindowComponent } from '../pop-out-window/pop-out-window.component';
 import { MiniProduct } from '../tools/MiniProduct';
+import { Baoguo } from '../tools/Baoguo';
 
 @Component({
   selector: 'app-order-packages-cell',
@@ -57,7 +58,22 @@ export class OrderPackagesCellComponent implements OnInit {
     for(let i = 1, len = ppds.length;i<len;i++){
       ppds[i].pid !== ppds[i-1].pid && this.prdNames.push(ppds[i])
     }
+  }
 
+  addParcel(total,sp){
+    let tot = Number(total)
+    let spf = Number(sp)
+    let parcel = new Baoguo(tot,spf)
+    //this.order.parcels.push(parcel)
+    if(Array.isArray(this.order.parcels) && this.order.parcels.length){
+      this.order.parcels.push(parcel)
+      console.log("ADD")
+
+    }else {
+      console.log("SET")
+      console.log(parcel.huokuan)
+      this.order.parcels = [parcel]
+    }
 
   }
 

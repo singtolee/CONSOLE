@@ -35,10 +35,23 @@ export class PackageTableViewComponent implements OnInit {
 
   }
 
+  calculatePart2(parcel:Baoguo){
+    let pWeight = parcel.weight*39
+    let pSize = parcel.box_l*parcel.box_h*parcel.box_w*parcel.unitPrice/1000000
+
+    if(pWeight>pSize){
+      return pWeight
+    }
+    return pSize
+
+
+  }
+
   sum(){
     var fee : number = 0
     for(var i = 0;i< this.parcels.length;i++){
-      fee = fee + this.getPart2(this.parcels[i].weight,this.parcels[i].size,this.parcels[i].unitPrice) + this.toThaiBaht(this.parcels[i].yunfei)
+      //fee = fee + this.getPart2(this.parcels[i].weight,this.parcels[i].size,this.parcels[i].unitPrice) + this.toThaiBaht(this.parcels[i].yunfei)
+      fee = fee + this.calculatePart2(this.parcels[i]) + this.toThaiBaht(this.parcels[i].yunfei)
     }
 
     if(fee < 99){

@@ -2,28 +2,45 @@
   <div class="card-header">
     <div class="row">
       <div class="col">
-          <ul>
-              <li class="small"><span class="badge badge-info">{{order.uid}}</span></li>
-              <li class="small"> Order ID: {{order.key}}</li>
-              <li class="small">Order Fee: {{order.grandTotal}}Baht</li>
-              <li class="small">Evaluated Shipping fee: {{order.evaluatedShippingFee}}</li>
-              <li class="small">Final Shipping fee: <span class="badge badge-warning">{{order.actualShippingCost}}THB</span>
-              </li>
-              <li class="small">Total QTY:<span class="badge badge-primary">{{order.totalQty}}</span> ITEMS</li>
-            </ul>
+        <ul>
+          <li class="small"><span class="badge badge-info">{{order.uid}}</span></li>
+          <li class="small"> Order ID: {{order.key}}</li>
+          <li class="small">Order Fee: {{order.grandTotal}}Baht</li>
+          <li class="small">Evaluated Shipping fee: {{order.evaluatedShippingFee}}</li>
+          <li class="small">Final Shipping fee: <span class="badge badge-warning">{{order.actualShippingCost}}THB</span>
+          </li>
+          <li class="small">Total QTY:<span class="badge badge-primary">{{order.totalQty}}</span> ITEMS</li>
+        </ul>
       </div>
       <div class="col">
-        <button type="button" (click)="viewAllProducts()" class="btn btn-sm btn-info btn-block">VIEW ALL PRODUCTS</button>
+        <button type="button" (click)="viewAllProducts()" class="btn btn-sm btn-info btn-block">VIEW ALL
+          PRODUCTS</button>
         <button type="button" (click)="printPackingList()" class="btn btn-sm btn-success btn-block">PRINT LIST</button>
         <button type="button" (click)="setOrderArrived()" class="btn btn-sm btn-primary btn-block">SET ARRIVED</button>
       </div>
     </div>
     <div class="row">
-      <ul>
-        <li *ngFor="let prd of prdNames" class="small">
-          {{prd.prdCnTitle}}{{prd.pid}}
-        </li>
-      </ul>
+      <div class="col-9">
+        <ul>
+          <li *ngFor="let prd of prdNames" class="small">
+            {{prd.prdCnTitle}}{{prd.pid}}
+          </li>
+        </ul>
+
+      </div>
+      <div class="col-3">
+        <div class="input-group-sm mb-2">
+          <input type="number" class="form-control" placeholder="Total(CNY)" #totalAmount>
+        </div>
+
+        <div class="input-group-sm mb-2">
+          <input type="number" class="form-control" placeholder="PART 1 (CNY)" #part1shippingfee>
+        </div>
+        <button type="button" (click)="addParcel(totalAmount.value,part1shippingfee.value)"
+          class="btn btn-sm btn-info btn-block">Add
+          Parcel</button>
+
+      </div>
     </div>
 
 
@@ -36,12 +53,17 @@
           <th scope="col" class="small">快递</th>
           <th scope="col" class="small">单号</th>
           <th scope="col" class="small">运费</th>
-          <th scope="col" class="small">货款</th>
+          <th scope="col" class="small">总额</th>
           <th scope="col" class="small">重量</th>
-          <th scope="col" class="small">体积</th>
+          <th scope="col" class="small">长</th>
+          <th scope="col" class="small">宽</th>
+          <th scope="col" class="small">高</th>
           <th scope="col" class="small">单价</th>
           <th scope="col" class="small">三维</th>
+          <th scope="col" class="small">名称</th>
           <th scope="col" class="small">状态</th>
+          <th scope="col" class="small">备注</th>
+
         </tr>
       </thead>
       <tbody>
@@ -62,8 +84,14 @@
             <app-editable-number [(ngModel)]="parce.weight" type="text"> </app-editable-number>
           </td>
           <td scope="row">
-            <app-editable-number [(ngModel)]="parce.size" type="text"> </app-editable-number>
+            <app-editable-number [(ngModel)]="parce.box_l" type="text"> </app-editable-number>
           </td>
+          <td scope="row">
+              <app-editable-number [(ngModel)]="parce.box_w" type="text"> </app-editable-number>
+            </td>
+            <td scope="row">
+                <app-editable-number [(ngModel)]="parce.box_h" type="text"> </app-editable-number>
+              </td>
           <td scope="row">
             <app-editable-number [(ngModel)]="parce.unitPrice" type="text"> </app-editable-number>
           </td>
@@ -71,11 +99,20 @@
             <app-editable-text [(ngModel)]="parce.tpiId" type="text"> </app-editable-text>
           </td>
           <td scope="row">
+              <app-editable-text [(ngModel)]="parce.description" type="text"> </app-editable-text>
+            </td>
+
+          <td scope="row">
+              <app-editable-number [(ngModel)]="parce.status" type="text"> </app-editable-number>
+            </td>
+
+          <td scope="row">
             <app-editable-text [(ngModel)]="parce.remark" type="text"> </app-editable-text>
           </td>
         </tr>
       </tbody>
     </table>
-    <button type="button" (click)="undateParcelsInfo()" class="btn btn-sm btn-warning btn-block">SAVE PARCELS STATUS</button>
+    <button type="button" (click)="undateParcelsInfo()" class="btn btn-sm btn-warning btn-block">SAVE PARCELS
+      STATUS</button>
   </div>
 </div>
